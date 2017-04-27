@@ -40,7 +40,9 @@ var token = req.body.token || req.query.token || req.headers['x-access-token\ ']
         message: 'No token provided. '
       });
     }
-}
+};
 
+
+//apiRouter.use('/users', require('./users'));
 
 module.exports = apiRouter;
