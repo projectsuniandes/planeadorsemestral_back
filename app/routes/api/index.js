@@ -14,35 +14,10 @@ apiRouter.get('/', function(req, res) {
 });
 
 
-// route middleware to verify a token
-var middleware = function(req,res,next){
-  // do logging
-      console.log('Somebody just came to our app!');
-    // check header or url parameters or post parameters for token
-var token = req.body.token || req.query.token || req.headers['x-access-token\ '];
-    // decode token
-    if(token){
-      jwt.verify(token, superSecret, function(err, decoded){
-        if(err){
-          return res.json({success:false, message: 'Failed to authenticate token. '});
-        }
-        else{
-          //if everything is good, save to req for use in other ROUTESr
-          req.decoded = decoded;
-          next(); // make sure we go to the next routes and don't stop here
-        }
-      });
-    } else{
-      //if there is no token
-      //return an HTTP response of 403 (access forbidden) and an error message
-      return res.status(403).send({
-        success: false,
-        message: 'No token provided. '
-      });
-    }
-};
+apiRouter.use('/optimize', require('./optimize'));
 
 
 //apiRouter.use('/users', require('./users'));
+
 
 module.exports = apiRouter;
