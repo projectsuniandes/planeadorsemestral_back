@@ -22,17 +22,21 @@ Y esto retorna:
 
 [
   {
-    "id": 1,
     "course_code": "FISI2350",
-    "credits": 3, ---> TODO! 
-    "name": null,
+    "name": "FISICA ATOMICA",
+    "program_id": 1,
+    "program_code": "FISI",
+    "credits": 3, ---> TODO!
+  },
+  {
+    "course_code": "FISI2026",
+    "name": "HERRAMIENTAS COMPUTACIONALES",
     "program_id": 1,
     "program_code": "FISI"
   },
   {
-    "id": 1,
-    "course_code": "FISI2026",
-    "name": null,
+    "course_code": "FISI3901",
+    "name": "SEM.1 ASTRONOMIA Y ASTROFISICA",
     "program_id": 1,
     "program_code": "FISI"
   },
