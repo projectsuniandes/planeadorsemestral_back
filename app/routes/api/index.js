@@ -13,8 +13,9 @@ apiRouter.get('/', function(req, res) {
 });
 
 
-//apiRouter.use('/optimize', require('./optimize'));
+apiRouter.use('/optimize', require('./optimize'));
 apiRouter.use('/merge', require('./merge'));
+apiRouter.use('/programs', require('./programs'));
 
 //apiRouter.use('/users', require('./users'));
 //apiRouter.use('/users', require('./users'));

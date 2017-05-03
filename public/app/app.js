@@ -1,6 +1,11 @@
 angular.module('accio',[
   'app.routes',
-  'mainCtrl'
+  'mainCtrl',
+  'optimizerCtrl',
+  'optimizerService',
+  'coursesCtrl',
+  'coursesService'
+
 ]);
 
 // application configuration to integrate token into requests

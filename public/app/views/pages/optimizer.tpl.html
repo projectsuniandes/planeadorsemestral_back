@@ -9,36 +9,8 @@
           <label for="sel1">Seleccione su primera carrera:</label>
         </div>
         <div class="row">
-          <select class="form-control" id="sel1">
-            <option>Ingenieria de Sistemas y Computación</option>
-            <option>Física</option>
-            <option>Matemáticas</option>
-            <option>Ingenieria Electrónica</option>
-            <option>Economia</option>
-            <option>Administración</option>
-            <option>Antropología</option>
-            <option>Arquitectura</option>
-            <option>Arte</option>
-            <option>Ingeniería Industrial</option>
-            <option>Biología</option>
-            <option>Ciencia Política</option>
-            <option>Derecho</option>
-            <option>Ingenieria Quimica</option>
-            <option>Diseño</option>
-            <option>Filosofía</option>
-            <option>Física</option>
-            <option>Geociencias</option>
-            <option>Historia</option>
-            <option>Gobierno y Asuntos Públicos</option>
-            <option>Historia del Arte</option>
-            <option>Ingeniería Ambiental</option>
-            <option>Ingeniería Biomédica</option>
-            <option>Ingeniería Civil</option>
-            <option>Ingeniería Eléctrica</option>
-            <option>Ingeniería Mecánica</option>
-            <option>Ingeniería Química</option>
-            <option>Medicina</option>
-            <option>Matemáticas</option>
+          <select name="program1" id="program1" ng-model="optimizer.program1" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
           </select>
         </div>
         <br />
@@ -46,36 +18,8 @@
           <label for="sel1">Seleccione su segunda carrera:</label>
         </div>
         <div class="row">
-          <select class="form-control" id="sel1">
-            <option>Física</option>
-            <option>Matemáticas</option>
-            <option>Ingenieria Electrónica</option>
-            <option>Economia</option>
-            <option>Administración</option>
-            <option>Antropología</option>
-            <option>Arquitectura</option>
-            <option>Arte</option>
-            <option>Ingeniería Industrial</option>
-            <option>Biología</option>
-            <option>Ciencia Política</option>
-            <option>Derecho</option>
-            <option>Ingenieria Quimica</option>
-            <option>Diseño</option>
-            <option>Filosofía</option>
-            <option>Física</option>
-            <option>Geociencias</option>
-            <option>Historia</option>
-            <option>Gobierno y Asuntos Públicos</option>
-            <option>Historia del Arte</option>
-            <option>Ingeniería Ambiental</option>
-            <option>Ingeniería Biomédica</option>
-            <option>Ingeniería Civil</option>
-            <option>Ingeniería Eléctrica</option>
-            <option>Ingeniería Mecánica</option>
-            <option>Ingeniería Química</option>
-            <option>Ingenieria de Sistemas y Computación</option>
-            <option>Medicina</option>
-            <option>Matemáticas</option>
+          <select name="program2" id="program2" ng-model="optimizer.program2" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
           </select>
         </div>
       </div>
@@ -85,22 +29,19 @@
           <label for="sel3">Seleccione una opción:</label>
         </div>
         <div class="row">
-          <select class="form-control" id="sel3">
-            <option>-No aplica-</option>
-            <option>Opción en Biología</option>
-            <option>Opción en Diseño</option>
-            <option>Opción en ...</option>
+          <select name="opcion" id="opcion" ng-model="optimizer.opcion" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
           </select>
         </div>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-4" style="text-align:left">
         <div class="row">
-          <label for="ex2">Seleccione número de créditos mínimos y máximos:</label>
+          <label for="ex2">Seleccione número de créditos máximos:</label>
         </div>
         <br />
         <div class="row center">
-          <b>19   </b> <input id="ex2" type="text" class="span2" value="" data-slider-min="0" data-slider-max="25" data-slider-step="1" data-slider-value="[19,23]"/> <b>23</b>
+            <input type="number" class="form-control" name="" id="" ng-model="optimizer.maxCredits">
         </div>
       </div>
     </div>
@@ -109,7 +50,7 @@
       <br />
       <div class="col-md-12" style="text-align:right">
         <div class="btn-group">
-          <a class="btn btn-success" href="plan.html">Siguiente</a>
+          <a class="btn btn-success" ui-sref="courses">Siguiente</a>
         </div>
       </div>
     </div>
