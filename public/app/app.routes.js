@@ -10,4 +10,9 @@ angular.module('app.routes', ['ui.router'])
        templateUrl : "app/views/pages/optimizer.tpl.html",
        controller  : "mainController as main"
      })
+     .state('courses', {
+       url         : "/courses",
+       templateUrl : "app/views/pages/courses.tpl.html",
+       controller  : "coursesController as courses"
+     })
 })

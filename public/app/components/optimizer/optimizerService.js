@@ -11,6 +11,7 @@ angular.module('optimizerService', [])
     return $http.get('/api/programs');
 
   }
+  
 
-      return optimizerFactory;
+    return optimizerFactory;
 })
