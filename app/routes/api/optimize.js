@@ -214,23 +214,28 @@ router.route('/')
 
             // TRANSFORM RESULTS TO RESPONSE
             var response = {};
-            response.num = numSemesters;
-            var n = 0;
+            response.numSemesters = numSemesters;
+
+            var responseSemesters = [];
+            var semesterCourses = [];
+            var sem = {};
+            var j = 0;
             for (i = 0; i < numSemesters; i++) {
-              n = i+1;
-              response["semester"+n] = [];
+              sem.num = i+1;
+
+              for (j = 0; j < courses.length; j++) {
+                if (semesters[j] == i+1){
+                  semesterCourses.push(courses[j]);
+                }
+              }
+              sem.courses = semesterCourses;
+              semesterCourses = [];
+
+              responseSemesters.push(sem);
+              sem = {};
             }
 
-            var c = "";
-            var s = 0;
-            var sem = []
-            for (i = 0; i < courses.length; i++) {
-              c = courses[i];
-              s = semesters[i];
-              sem = response["semester"+s];
-              sem.push(c);
-              response["semester"+s] = sem;
-            }
+            response.semesters = responseSemesters;
 
             // send it to the Angular interface
             res.json(response);

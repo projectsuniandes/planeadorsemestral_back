@@ -42,3 +42,37 @@ Y esto retorna:
   },
   ...
 ]
+
+El return del post es:
+
+{
+  "numSemesters": 17,
+  "semesters": [
+    {
+      "num": 1,
+      "courses": [
+        "FISI6113",
+        "FISI3013",
+        "ISIS1404L",
+        "ISIS3710",
+        "FISI4042",
+        "FISI6962",
+        "ISIS2403",
+        "FISI4902"
+      ]
+    },
+    {
+      "num": 2,
+      "courses": [
+        "FISI2350",
+        "FISI3028",
+        "FISI1019",
+        "FISI2007",
+        "ISIS4005",
+        "ISIS4217",
+        "FISI4602",
+        "FISI1860"
+      ]
+    }, ...
+  ]
+}
