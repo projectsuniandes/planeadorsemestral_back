@@ -1,27 +1,26 @@
-angular.module('graphCtrl', ['graphService'])
-.controller('graphController', function($stateParams, Graph){
+angular.module('graphCtrl', ['graphService', 'coursesService'])
+.controller('graphController', function($stateParams, Graph, Courses){
   var vm = this;
 
   var getData = function(){
-    vm.data = Graph.getData();
-  }
-  getData();
-  vm.numSemesters= vm.data.length;
-  var setData= function(){
-    vm.semesters= [];
-    vm.semesters.courses = [];
-    for (var i = 0; i < vm.data.length; i++) {
-      semesters[i]=vm.data[i];
-    }
-    for (var i = 0; i < vm.semesters.length; i++) {
-      let act = vm.semesters[i];
-      for (var j = 0; j < act.courses.length; j++) {
-        vm.semesters[i].courses[j]=act.courses[j];
+    Courses.optimize().success(function(data){
+      console.log(data);
+      vm.data = data;
+      vm.numSemesters= vm.data.num;
+      vm.semesters= [];
+      vm.semesters.courses = [];
+      for (var i = 1; i < vm.numSemesters; i++) {
+        vm.semesters[i-1]=vm.data["semester"+i];
       }
-    }
+      for (var i = 0; i < vm.semesters.length; i++) {
+        let act = vm.semesters[i];
+        for (var j = 0; j < act.courses.length; j++) {
+          vm.semesters[i].courses[j]=act.courses[j];
+        }
+      }
+
+    })
   }
-  setData();
-  console.log(vm.semesters);
 
 
 })

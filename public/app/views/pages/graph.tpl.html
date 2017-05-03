@@ -4,7 +4,9 @@
       <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Seleccione los cursos vistos</h2>
       <br />
       <div class="row">
-
+      <p ng-repeat="a in graph.data">
+        {{a.semester}}
+      </p>
 
 
       </div>
@@ -12,7 +14,7 @@
         <br />
         <div class="col-md-12" style="text-align:right">
           <div class="btn-group">
-            <a class="btn btn-success" ng-click="courses.generate()">Generar</a>
+            <a class="btn btn-success" ng-click="graph.getData()">Generar</a>
           </div>
         </div>
       </div>

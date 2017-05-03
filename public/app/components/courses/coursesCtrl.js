@@ -11,7 +11,6 @@ angular.module('coursesCtrl', ['coursesService', 'graphService'])
     Courses.optimize().success(function(data){
       console.log(data);
       vm.results = data;
-      Graph.setData(data);
     })
   }
   console.log(vm.results);
