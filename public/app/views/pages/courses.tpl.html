@@ -3,10 +3,11 @@
     <div class="container">
       <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Seleccione los cursos vistos</h2>
       <br />
+
       <div class="row">
-        <span ng-repeat="a in courses.courses" class="col-md-2" >
+        <span class="col-md-2" ng-repeat="a in courses.courses">
           <label for="{{a.course_code}}">
-            <input type="checkbox" ng-model="courses.seen[a.course_id]" name="group" id="{{a.course_code}}" />
+            <input type="checkbox" value="{{a.course_code}}"  ng-model="courses.selected[a.course_id]" name="group" id="{{a.course_code}}" />
             {{a.course_code}}
           </label>
         </span>
