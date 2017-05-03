@@ -3,10 +3,12 @@ angular.module('graphService', [])
   var graphFactory = {};
   let data;
   graphFactory.setData = function(pData){
+    console.log(pData);
     data=pData;
   }
 
   graphFactory.getData = function(){
+    console.log(data);
     return data;
   }
 

@@ -1,12 +1,14 @@
 <div ng-controller="graphController as graph">
   <section class="works service-page">
     <div class="container">
-      <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Seleccione los cursos vistos</h2>
+      <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Resultados de la optimizacion</h2>
       <br />
       <div class="row">
+
       <p ng-repeat="a in graph.data">
         {{a.semester}}
       </p>
+
 
 
       </div>

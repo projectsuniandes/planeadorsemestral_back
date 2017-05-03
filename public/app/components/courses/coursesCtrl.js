@@ -13,6 +13,5 @@ angular.module('coursesCtrl', ['coursesService', 'graphService'])
       vm.results = data;
     })
   }
-  console.log(vm.results);
 
 })
