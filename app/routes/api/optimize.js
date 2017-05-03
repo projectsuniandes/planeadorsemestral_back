@@ -7,7 +7,7 @@ var fs = require('fs');
 // create a new Router
 var router = express.Router();
 
-// on routes that end in /optimization
+// on routes that end in /optimize
 // ----------------------------------------------------
 router.route('/')
 

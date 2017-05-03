@@ -8,6 +8,8 @@ var config  = require('../../../config');
 // super secret for creating tokens
 var superSecret = config.secret;
 
+// create a new Router
+var router = express.Router();
 
 router.post('/auth', function(req, res) {
 
