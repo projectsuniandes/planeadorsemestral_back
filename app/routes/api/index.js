@@ -1,5 +1,4 @@
 var express = require('express');
-var jwt     = require('jsonwebtoken');
 var config  = require('../../../config');
 var superSecret = config.secret;
 
@@ -15,6 +14,9 @@ apiRouter.get('/', function(req, res) {
 
 
 apiRouter.use('/optimize', require('./optimize'));
+apiRouter.use('/merge', require('./merge'));
+
+//apiRouter.use('/users', require('./users'));
 apiRouter.use('/users', require('./users'));
 
 
