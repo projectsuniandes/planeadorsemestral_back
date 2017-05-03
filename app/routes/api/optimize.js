@@ -93,104 +93,93 @@ router.route('/')
       stream.end();
     });
 
-    var fileGAMSExists = fs.existsSync(optimizerPath+optimizerFilename);
-    timeout_current = 0;
-    while(!fileGAMSExists) {
-      //wait in intervals of 500ms
-      var waitTill = new Date(new Date().getTime() + timeout_delta);
-      while(waitTill > new Date()){
-        //wait
-      }
-
-      timeout_current += timeout_delta;
-      if (timeout_current >= timeout_max) {
-        break;
-      }
-
-      fileGAMSExists = fs.existsSync(optimizerPath+optimizerFilename);
-      console.log("existe2: "+fileGAMSExists);
-    }
-
-    var cp = require('child_process');
     var command = "C:\\GAMS\\win64\\24.0\\gams.exe " + optimizerPath + optimizerFilename + " suppress=1 lo=0 o=nul";
-    cp.exec(command, function(error, stdout, stderr) {
-      console.log(stdout);
-      console.log(stderr);
-      if (error) console.log(error);
+
+    var child_process = require('child_process');
+    var execution = child_process.exec(command, function (error, stdout, stderr) {
+      if (error) {
+         console.log(error.stack);
+         console.log('Error code: '+error.code);
+         console.log('Signal received: '+error.signal);
+         console.log('stdout: ' + stdout);
+         console.log('stderr: ' + stderr);
+      }
+
+      // readGAMSResults:
+      var fileResultsExists = fs.existsSync(optimizerPath+resultsFilename);
+      timeout_current = 0;
+      while(!fileResultsExists) {
+        //wait in intervals of 500ms
+        var waitTill = new Date(new Date().getTime() + timeout_delta);
+        while(waitTill > new Date()){
+          //wait
+        }
+
+        timeout_current += timeout_delta;
+        if (timeout_current >= timeout_max) {
+          break;
+        }
+
+        fileResultsExists = fs.existsSync(optimizerPath+optimizerFilename);
+      }
+
+      var text = fs.readFileSync(optimizerPath+resultsFilename,'utf8');
+      var lines = text.split("\n");
+
+      var line = lines[0];
+      var line_elements = line.split(" ");
+      var line_elements_length = line_elements.length;
+
+      var courses = [];
+      var semesters = [];
+      var sem = "";
+      var n = 0;
+      var numSemesters = 0;
+
+      var i = 0;
+      for (i = 0; i < lines.length-1; i++) { //-1 because the results has a \n at the end
+        line = lines[i];
+        line_elements = line.split(" ");
+        line_elements_length = line_elements.length;
+
+        courses.push(line_elements[0]);
+        sem = line_elements[line_elements_length - 1];
+
+        n = parseInt(sem.split("")[1]);
+        semesters.push(n);
+
+        if (n >= numSemesters){
+          numSemesters = n;
+        }
+      }
+
+      // TRANSFORM RESULTS TO RESPONSE
+      var response = {};
+      var n = 0;
+      var i = 0;
+      for (i = 0; i < numSemesters; i++) {
+        n = i+1;
+        response["semester"+n] = [];
+      }
+
+      var c = "";
+      var s = 0;
+      var sem = []
+      for (i = 0; i < courses.length; i++) {
+        c = courses[i];
+        s = semesters[i];
+        sem = response["semester"+s];
+        sem.push(c);
+        response["semester"+s] = sem;
+      }
+
+      // send it to the Angular interface
+      res.json(response);
     });
 
-    console.log(command);
-
-    // readGAMSResults:
-    var fileResultsExists = fs.existsSync(optimizerPath+resultsFilename);
-    timeout_current = 0;
-    while(!fileResultsExists) {
-      //wait in intervals of 500ms
-      var waitTill = new Date(new Date().getTime() + timeout_delta);
-      while(waitTill > new Date()){
-        //wait
-      }
-
-      timeout_current += timeout_delta;
-      if (timeout_current >= timeout_max) {
-        break;
-      }
-
-      fileResultsExists = fs.existsSync(optimizerPath+optimizerFilename);
-    }
-
-    var text = fs.readFileSync(optimizerPath+resultsFilename,'utf8');
-    var lines = text.split("\n");
-
-    var line = lines[0];
-    var line_elements = line.split(" ");
-    var line_elements_length = line_elements.length;
-
-    var courses = [];
-    var semesters = [];
-    var sem = "";
-    var n = 0;
-    var numSemesters = 0;
-
-    var i = 0;
-    for (i = 0; i < lines.length-1; i++) { //-1 because the results has a \n at the end
-      line = lines[i];
-      line_elements = line.split(" ");
-      line_elements_length = line_elements.length;
-
-      courses.push(line_elements[0]);
-      sem = line_elements[line_elements_length - 1];
-
-      n = parseInt(sem.split("")[1]);
-      semesters.push(n);
-
-      if (n >= numSemesters){
-        numSemesters = n;
-      }
-    }
-
-    // TRANSFORM RESULTS TO RESPONSE
-    var response = {};
-    var n = 0;
-    var i = 0;
-    for (i = 0; i < numSemesters; i++) {
-      n = i+1;
-      response["semester"+n] = [];
-    }
-
-    var c = "";
-    var s = 0;
-    var sem = []
-    for (i = 0; i < courses.length; i++) {
-      c = courses[i];
-      s = semesters[i];
-      sem = response["semester"+s];
-      sem.push(c);
-      response["semester"+s] = sem;
-    }
-
-    // send it to the Angular interface
-    res.json(response);
+    // execution.on('exit', function (code) {
+    //   console.log('Child process exited with exit code '+code);
+    // });
 })
 
 module.exports = router;
