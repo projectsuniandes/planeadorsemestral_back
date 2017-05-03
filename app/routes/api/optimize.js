@@ -17,8 +17,15 @@ router.route('/')
     // GET JSON ATTRIBUTES
     // recieve preferences that will become restrictions
     // format those restrictions if necessary
-    var minCredits = 18;
-    var maxCredits = 25;
+    var jsonData = req.body;
+
+    var firstProgram = jsonData.firstProgram;
+    var secondProgram = jsonData.secondProgram;
+    var option = jsonData.option;
+    var coursesTaken = jsonData.coursesTaken;
+    var minCredits = jsonData.minCredits;
+    var maxCredits = jsonData.maxCredits;
+
     var maxSemesters = 20;
     var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
     var optimizerFilename = "optimizador.gms";
