@@ -39,7 +39,7 @@ router.route('/')
     // CALL GAMS
     writeGAMS(minCredits, maxCredits, maxSemesters, totalCourses, coursesCredits, adjacencyMatrix, optimizerPath, optimizerFilename, resultsFilename);
 	  executeGAMS(optimizerPath, optimizerFilename);
-	  var results = readGAMSResults(optimizerPath, resultsFilename));
+	  var results = readGAMSResults(optimizerPath, resultsFilename);
 
     // TRANSFORM RESULTS TO RESPONSE
     var courses = results.courses;
