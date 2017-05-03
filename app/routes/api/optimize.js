@@ -31,6 +31,11 @@ router.route('/')
     var optimizerFilename = "optimizador.gms";
     var resultsFilename = "resultados.txt";
 
+    //waits until file exists 30s max in 500ms intervals
+    var timeout_current = 0;
+    var timeout_delta = 500;
+    var timeout_max = 1000*30;
+
     // CREATE ADJACENCY MATRIX
     //var totalCourses = mergeCourses(firstProgram, secondProgram, option, coursesTaken);
     //var coursesCredits = getCoursesCredits(totalCourses);
@@ -88,35 +93,50 @@ router.route('/')
       stream.end();
     });
 
-    // executeGAMS:
-    var exec = require('child_process').exec;
-    var command = "C:\\GAMS\\win64\\24.0\\gams.exe " + optimizerPath + optimizerFilename + " suppress=1 lo=0 o=nul";
-
-    exec(command, function(error, stdout, stderr) {
-      if (error !== null) {
-        console.log('exec error: ' + error);
-      }
-    });
-
-    // readGAMSResults:
-    var timeout_max = 1000*30; //waits until file exists 30s max
-    var timeout_delta = 500;
-    var timeout_current = 0;
-
-    var fileExists = fs.existsSync(optimizerPath+optimizerFilename);
-
-    while(!fileExists) {
+    var fileGAMSExists = fs.existsSync(optimizerPath+optimizerFilename);
+    timeout_current = 0;
+    while(!fileGAMSExists) {
       //wait in intervals of 500ms
-      setTimeout(function() {
-        timeout_current += timeout_delta; // Whatever you want to do after the wait
-      }, timeout_delta);
+      var waitTill = new Date(new Date().getTime() + timeout_delta);
+      while(waitTill > new Date()){
+        //wait
+      }
 
+      timeout_current += timeout_delta;
       if (timeout_current >= timeout_max) {
         break;
-        //TODO notify that it couldn't read the results file because it was not created
       }
 
-      fileExists = fs.existsSync(optimizerPath+optimizerFilename);
+      fileGAMSExists = fs.existsSync(optimizerPath+optimizerFilename);
+      console.log("existe2: "+fileGAMSExists);
+    }
+
+    var cp = require('child_process');
+    var command = "C:\\GAMS\\win64\\24.0\\gams.exe " + optimizerPath + optimizerFilename + " suppress=1 lo=0 o=nul";
+    cp.exec(command, function(error, stdout, stderr) {
+      console.log(stdout);
+      console.log(stderr);
+      if (error) console.log(error);
+    });
+
+    console.log(command);
+
+    // readGAMSResults:
+    var fileResultsExists = fs.existsSync(optimizerPath+resultsFilename);
+    timeout_current = 0;
+    while(!fileResultsExists) {
+      //wait in intervals of 500ms
+      var waitTill = new Date(new Date().getTime() + timeout_delta);
+      while(waitTill > new Date()){
+        //wait
+      }
+
+      timeout_current += timeout_delta;
+      if (timeout_current >= timeout_max) {
+        break;
+      }
+
+      fileResultsExists = fs.existsSync(optimizerPath+optimizerFilename);
     }
 
     var text = fs.readFileSync(optimizerPath+resultsFilename,'utf8');
