@@ -1,0 +1,59 @@
+<div ng-controller="optimizerController as optimizer">
+<section class="works service-page">
+  <div class="container">
+    <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Ingrese sus preferencias</h2>
+    <br />
+    <div class="row">
+      <div class="col-md-3" style="text-align:left">
+        <div class="row">
+          <label for="sel1">Seleccione su primera carrera:</label>
+        </div>
+        <div class="row">
+          <select name="program1" id="program1" ng-model="optimizer.program1" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
+          </select>
+        </div>
+        <br />
+        <div class="row">
+          <label for="sel1">Seleccione su segunda carrera:</label>
+        </div>
+        <div class="row">
+          <select name="program2" id="program2" ng-model="optimizer.program2" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-3" style="text-align:left">
+        <div class="row">
+          <label for="sel3">Seleccione una opción:</label>
+        </div>
+        <div class="row">
+          <select name="opcion" id="opcion" ng-model="optimizer.opcion" class="form-control">
+            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.program_code}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4" style="text-align:left">
+        <div class="row">
+          <label for="ex2">Seleccione número de créditos máximos:</label>
+        </div>
+        <br />
+        <div class="row center">
+            <input type="number" class="form-control" name="" id="" ng-model="optimizer.maxCredits">
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <br />
+      <div class="col-md-12" style="text-align:right">
+        <div class="btn-group">
+          <a class="btn btn-success" ui-sref="courses">Siguiente</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>

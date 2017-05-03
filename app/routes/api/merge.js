@@ -5,6 +5,7 @@ var users   = require('../../../data').users;
 var config  = require('../../../config');
 var pg         = require('pg');
 var query      = require('pg-query');
+var async     = require('async');
 
 // calls the module that merges subjects
 //var merger = require('../../modules/merger');
@@ -53,11 +54,13 @@ router.route('/')
             if (err){
               console.log(err);
             }
-            console.log(result);
 
             return res.json(result);
 
+
+
           });
+
       });
 
 function getProgramId(programName){
