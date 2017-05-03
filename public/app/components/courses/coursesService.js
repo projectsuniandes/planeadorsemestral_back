@@ -14,6 +14,7 @@ angular.module('coursesService', [])
 		maxCredits=pMaxCredits;
   }
   coursesFactory.optimize= function(){
+		console.log('in optimize');
 		optimizeData= {};
 		optimizeData.firstProgram= program1;
     optimizeData.secondProgram= program2;

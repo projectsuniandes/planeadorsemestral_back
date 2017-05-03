@@ -4,9 +4,11 @@ angular.module('graphCtrl', ['graphService', 'coursesService'])
 
   var getData = function(){
     Courses.optimize().success(function(data){
+      console.log('getData graph');
       console.log(data);
       vm.data = data;
       vm.numSemesters= vm.data.num;
+      console.log(vm.numSemesters);
       vm.semesters= [];
       vm.semesters.courses = [];
       for (var i = 1; i < vm.numSemesters; i++) {
