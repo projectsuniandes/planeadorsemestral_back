@@ -32,9 +32,12 @@ router.route('/')
     var resultsFilename = "resultados.txt";
 
     // CREATE ADJACENCY MATRIX
-    var totalCourses = mergeCourses(firstProgram, secondProgram, option, coursesTaken);
-    var coursesCredits = getCoursesCredits(totalCourses);
-    var adjacencyMatrix = createAdjacencyMatrix(totalCourses); //call merge to get them
+    //var totalCourses = mergeCourses(firstProgram, secondProgram, option, coursesTaken);
+    //var coursesCredits = getCoursesCredits(totalCourses);
+    //var adjacencyMatrix = createAdjacencyMatrix(totalCourses); 
+    var totalCourses = [];
+    var coursesCredits = [];
+    var adjacencyMatrix = [];
 
     // CALL GAMS
     writeGAMS(minCredits, maxCredits, maxSemesters, totalCourses, coursesCredits, adjacencyMatrix, optimizerPath, optimizerFilename, resultsFilename);
