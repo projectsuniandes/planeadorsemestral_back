@@ -17,16 +17,17 @@
   },
   "homepage": "https://github.com/projectsuniandes/planeadorsemestral_back#readme",
   "dependencies": {
+    "async": "^2.4.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
+    "crypto-js": "3.1.8",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.1.9",
-    "morgan": "^1.7.0",
-    "pg": "^6.1.0",
-    "pg-query": "^0.11.0",
     "mapred": "0.1.0",
-    "crypto-js": "3.1.8",
-    "node-regexp":"0.1.1 "
+    "morgan": "^1.7.0",
+    "node-regexp": "0.1.1 ",
+    "pg": "^6.1.0",
+    "pg-query": "^0.11.0"
   },
   "devDependencies": {
     "nodemon": "^1.10.2"

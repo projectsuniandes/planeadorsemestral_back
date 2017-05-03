@@ -34,11 +34,11 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 // enable SSL on postgres requests
-//pg.defaults.ssl = true;
+pg.defaults.ssl = true;
 
 
 // configure URL for Heroku postgres
-//query.connectionParameters = process.env.DATABASE_URL || config.postgresUrl;
+query.connectionParameters = process.env.DATABASE_URL || config.postgresUrl;
 
 // ROUTES FOR OUR API
 // ==============================================
