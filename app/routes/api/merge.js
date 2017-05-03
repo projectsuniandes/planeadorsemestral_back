@@ -23,15 +23,15 @@ router.route('/')
 
     let programs = [];
     if(req.query.program1){
-      console.log("considera programa 1");
+      //console.log("considera programa 1");
       programs.push("'" +req.query.program1 + "'");
     }
     if(req.query.program2){
-      console.log("considera programa 2");
+      //console.log("considera programa 2");
       programs.push("'" +req.query.program2 + "'");
     }
     if(req.query.program3){
-      console.log("considera programa 3");
+      //console.log("considera programa 3");
       programs.push("'" +req.query.program3 + "'");
     }
 
@@ -46,9 +46,8 @@ router.route('/')
         sql += " OR programs.program_code=" + programs[2];
     }
 
-    console.log(sql);
+    //console.log(sql);
       query(sql, function(err, result) {
-        console.log('entra query');
         if (err){
           console.log(err);
         }
