@@ -32,23 +32,24 @@ router.route('/')
     var resultsFilename = "resultados.txt";
 
     // CREATE ADJACENCY MATRIX
-    // var courses = {} //call merge to get them
-    // ...
+    var totalCourses = mergeCourses(firstProgram, secondProgram, option, coursesTaken);
+    var coursesCredits = getCoursesCredits(totalCourses);
+    var adjacencyMatrix = createAdjacencyMatrix(totalCourses); //call merge to get them
 
     // CALL GAMS
-    writeGAMS(minCredits, maxCredits, maxSemesters, optimizerPath, optimizerFilename, resultsFilename);
+    writeGAMS(minCredits, maxCredits, maxSemesters, totalCourses, coursesCredits, adjacencyMatrix, optimizerPath, optimizerFilename, resultsFilename);
 	  executeGAMS(optimizerPath, optimizerFilename);
 	  var results = readGAMSResults(optimizerPath, resultsFilename));
 
     // TRANSFORM RESULTS TO RESPONSE
     var courses = results.courses;
     var semesters = results.semesters;
-    var num_semesters = results.num_semesters;
+    var num_semesters = results.numSemesters;
 
     var response = {};
     var n = 0;
     var i = 0;
-    for (i = 0; i < num_semesters; i++) {
+    for (i = 0; i < numSemesters; i++) {
       n = i+1;
       response["semester"+n] = [];
     }
@@ -70,7 +71,7 @@ router.route('/')
 
 // functions
 
-writeGAMS(function(minCredits, maxCredits, maxSemesters, optimizerPath, optimizerFilename, resultsFilename) {
+writeGAMS(function(minCredits, maxCredits, maxSemesters, totalCourses, coursesCredits, adjacencyMatrix, optimizerPath, optimizerFilename, resultsFilename) {
   import System.IO;
 
   var sw : StreamWriter = new StreamWriter(optimizerPath+optimizerFilename);
