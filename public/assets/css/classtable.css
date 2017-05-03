@@ -1,0 +1,35 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.semestre{
+  width: 10%;
+}
+.materias {
+  width: 90%;
+}
+.circle-container {
+  padding: 10px;
+}
+
+.circle{
+  padding-top: 40px;
+  margin: 10px;
+  float: left;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  font-size:120%;
+  color:000;
+  line-height:20px;
+  text-align:center;
+  background:#FEF5CA
+}
+
+.fisica {
+  background:#98F5FF
+}
+
+.sistemas {
+  background:#FF8C00
+}
