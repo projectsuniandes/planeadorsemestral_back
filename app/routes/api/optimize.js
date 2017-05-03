@@ -1,5 +1,5 @@
 "use strict";
-
+import System.IO;
 var express = require('express');
 var users   = require('../../../data').users;
 var config  = require('../../../config');
@@ -34,7 +34,7 @@ router.route('/')
     // CREATE ADJACENCY MATRIX
     //var totalCourses = mergeCourses(firstProgram, secondProgram, option, coursesTaken);
     //var coursesCredits = getCoursesCredits(totalCourses);
-    //var adjacencyMatrix = createAdjacencyMatrix(totalCourses); 
+    //var adjacencyMatrix = createAdjacencyMatrix(totalCourses);
     var totalCourses = [];
     var coursesCredits = [];
     var adjacencyMatrix = [];
@@ -75,8 +75,6 @@ router.route('/')
 // functions
 
 writeGAMS(function(minCredits, maxCredits, maxSemesters, totalCourses, coursesCredits, adjacencyMatrix, optimizerPath, optimizerFilename, resultsFilename) {
-  import System.IO;
-
   var sw : StreamWriter = new StreamWriter(optimizerPath+optimizerFilename);
 
   sw.WriteLine("$Set NUM_MAX_CREDITOS "+ maxCredits);
@@ -142,8 +140,6 @@ executeGAMS(function(optimizerPath, optimizerFilename) {
 })
 
 readGAMSResults(function(optimizerPath, resultsFilename) {
-  import System.IO;
-
   //wait until file exists
   var timeout_max = 1000*30; //waits 30s max
   var timeout_delta = 500;
