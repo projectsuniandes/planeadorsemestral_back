@@ -12,3 +12,8 @@ Para efectos simples, probaremos other-programs con un tamanio de 1, y luego pro
   "minCredits": 17,
   "maxCredits": 25
 }
+
+
+Cuando se requiera hacer un listado de las materias combinadas de 2 o más programas, el frontend podrá pedirlas a la siguiente ruta
+
+GET api/merge?program1=FISI&program2=ISIS&program3=IELE
