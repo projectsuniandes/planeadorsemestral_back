@@ -14,8 +14,8 @@ apiRouter.get('/', function(req, res) {
 });
 
 
-
-
+apiRouter.use('/optimize', require('./optimize'));
 apiRouter.use('/users', require('./users'));
+
 
 module.exports = apiRouter;
