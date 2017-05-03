@@ -93,8 +93,6 @@ router.route('/')
     var command = "C:\\GAMS\\win64\\24.0\\gams.exe " + optimizerPath + optimizerFilename + " suppress=1 lo=0 o=nul";
 
     exec(command, function(error, stdout, stderr) {
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
       if (error !== null) {
         console.log('exec error: ' + error);
       }
