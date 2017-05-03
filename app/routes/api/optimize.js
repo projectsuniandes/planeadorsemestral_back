@@ -89,26 +89,24 @@ router.route('/')
     });
 
     // executeGAMS:
-    var exec = require('child_process').exec, child;
+    var exec = require('child_process').exec;
     var command = "C:\\GAMS\\win64\\24.0\\gams.exe " + optimizerPath + optimizerFilename + " suppress=1 lo=0 o=nul";
 
-    child = exec(command,
-      function (error, stdout, stderr) {
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
-        if (error !== null) {
-          console.log('exec error: ' + error);
-        }
-      });
-
-    child();
+    exec(command, function(error, stdout, stderr) {
+      console.log('stdout: ' + stdout);
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+    });
 
     // readGAMSResults:
     var timeout_max = 1000*30; //waits until file exists 30s max
     var timeout_delta = 500;
     var timeout_current = 0;
-    var fso = new ActiveXObject("Scripting.FileSystemObject");
-    var fileExists = fso.FileExists(optimizerPath+optimizerFilename);
+
+    var fileExists = fs.existsSync(optimizerPath+optimizerFilename);
+
     while(!fileExists) {
       //wait in intervals of 500ms
       setTimeout(function() {
@@ -120,7 +118,7 @@ router.route('/')
         //TODO notify that it couldn't read the results file because it was not created
       }
 
-      fileExists = fso.FileExists(optimizerPath+optimizerFilename);
+      fileExists = fs.existsSync(optimizerPath+optimizerFilename);
     }
 
     var text = fs.readFileSync(optimizerPath+resultsFilename,'utf8');
@@ -133,21 +131,27 @@ router.route('/')
     var courses = [];
     var semesters = [];
     var sem = "";
+    var n = 0;
+    var numSemesters = 0;
 
     var i = 0;
-    for (i = 0; i < lines.length; i++) {
+    for (i = 0; i < lines.length-1; i++) { //-1 because the results has a \n at the end
       line = lines[i];
       line_elements = line.split(" ");
       line_elements_length = line_elements.length;
 
       courses.push(line_elements[0]);
       sem = line_elements[line_elements_length - 1];
-      semesters.push(sem.split("")[1]);
+
+      n = parseInt(sem.split("")[1]);
+      semesters.push(n);
+
+      if (n >= numSemesters){
+        numSemesters = n;
+      }
     }
 
     // TRANSFORM RESULTS TO RESPONSE
-    var numSemesters = Math.max(semesters);
-
     var response = {};
     var n = 0;
     var i = 0;
