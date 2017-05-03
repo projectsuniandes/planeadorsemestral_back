@@ -1,5 +1,5 @@
-angular.module('coursesCtrl', ['coursesService'])
-.controller('coursesController', function($stateParams, Courses){
+angular.module('coursesCtrl', ['coursesService', 'graphService'])
+.controller('coursesController', function($stateParams, Courses, Graph){
   var vm =this;
   vm.getCourses = function(){
     Courses.getCourses().success(function(data){
@@ -10,6 +10,7 @@ angular.module('coursesCtrl', ['coursesService'])
   vm.generate = function(){
     Courses.optimize().success(function(data){
       vm.results = data;
+      Graph.setData(data);
     })
   }
   console.log(vm.results);
