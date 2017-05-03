@@ -9,6 +9,7 @@ angular.module('coursesCtrl', ['coursesService', 'graphService'])
   vm.getCourses();
   vm.generate = function(){
     Courses.optimize().success(function(data){
+      console.log(data);
       vm.results = data;
       Graph.setData(data);
     })
