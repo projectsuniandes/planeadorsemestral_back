@@ -4,7 +4,9 @@ angular.module('accio',[
   'optimizerCtrl',
   'optimizerService',
   'coursesCtrl',
-  'coursesService'
+  'coursesService',
+  'graphCtrl',
+  'graphService'
 
 ]);
 

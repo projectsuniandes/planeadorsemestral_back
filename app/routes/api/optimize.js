@@ -214,6 +214,7 @@ router.route('/')
 
             // TRANSFORM RESULTS TO RESPONSE
             var response = {};
+            response.num = numSemesters;
             var n = 0;
             for (i = 0; i < numSemesters; i++) {
               n = i+1;

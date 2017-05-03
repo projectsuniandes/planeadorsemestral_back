@@ -3,25 +3,21 @@ angular.module('graphCtrl', ['graphService'])
   var vm = this;
 
   var getData = function(){
+    console.log('getData');
     vm.data = Graph.getData();
+    vm.numSemesters = vm.data.num;
   }
   getData();
-  vm.numSemesters= vm.data.length;
+  console.log(vm.data);
   var setData= function(){
-    vm.semesters= [];
-    vm.semesters.courses = [];
-    for (var i = 0; i < vm.data.length; i++) {
-      semesters[i]=vm.data[i];
-    }
-    for (var i = 0; i < vm.semesters.length; i++) {
-      let act = vm.semesters[i];
-      for (var j = 0; j < act.courses.length; j++) {
-        vm.semesters[i].courses[j]=act.courses[j];
-      }
+  vm.response = {};
+  vm.response.semester = [];
+  for (var i = 1; i <= vm.numSemesters; i++) {
+      vm.response.semester[i]= vm.data["semester"+i];
     }
   }
   setData();
-  console.log(vm.semesters);
+  console.log(vm.response);
 
 
 })

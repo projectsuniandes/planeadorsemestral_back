@@ -5,8 +5,7 @@ angular.module('optimizerCtrl', ['optimizerService'])
   vm.program2;
   vm.opcion;
   vm.getPrograms = function(){
-    Optimizer.getPrograms().success(function(data){
-      console.log(data);
+    Optimizer.getPrograms().success(function(data){      
       vm.programs= data;
     })
   }
