@@ -1,0 +1,26 @@
+<div ng-controller="coursesController as graph">
+  <section class="works service-page">
+    <div class="container">
+      <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Resultados de la optimizacion</h2>
+      <br />
+      <div class="row">
+
+      <p ng-repeat="a in graph.data">
+        semester
+        {{a.semester1}}
+      </p>
+
+
+
+      </div>
+      <div class="row">
+        <br />
+        <div class="col-md-12" style="text-align:right">
+          <div class="btn-group">
+            <a class="btn btn-success" ui-sref="courses">Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

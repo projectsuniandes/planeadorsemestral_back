@@ -15,4 +15,9 @@ angular.module('app.routes', ['ui.router'])
        templateUrl : "app/views/pages/courses.tpl.html",
        controller  : "coursesController as courses"
      })
+     .state('graph', {
+       url         : "/graph",
+       templateUrl : "app/views/pages/graph.tpl.html",
+       controller  : "coursesController as graph"
+     });
 })

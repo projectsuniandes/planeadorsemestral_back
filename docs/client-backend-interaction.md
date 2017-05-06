@@ -22,19 +22,57 @@ Y esto retorna:
 
 [
   {
-    "id": 1,
     "course_code": "FISI2350",
-    "credits": 3, ---> TODO! 
-    "name": null,
+    "name": "FISICA ATOMICA",
+    "program_id": 1,
+    "program_code": "FISI",
+    "credits": 3, ---> TODO!
+  },
+  {
+    "course_code": "FISI2026",
+    "name": "HERRAMIENTAS COMPUTACIONALES",
     "program_id": 1,
     "program_code": "FISI"
   },
   {
-    "id": 1,
-    "course_code": "FISI2026",
-    "name": null,
+    "course_code": "FISI3901",
+    "name": "SEM.1 ASTRONOMIA Y ASTROFISICA",
     "program_id": 1,
     "program_code": "FISI"
   },
   ...
 ]
+
+El return del post es:
+
+{
+  "numSemesters": 17,
+  "semesters": [
+    {
+      "num": 1,
+      "courses": [
+        "FISI6113",
+        "FISI3013",
+        "ISIS1404L",
+        "ISIS3710",
+        "FISI4042",
+        "FISI6962",
+        "ISIS2403",
+        "FISI4902"
+      ]
+    },
+    {
+      "num": 2,
+      "courses": [
+        "FISI2350",
+        "FISI3028",
+        "FISI1019",
+        "FISI2007",
+        "ISIS4005",
+        "ISIS4217",
+        "FISI4602",
+        "FISI1860"
+      ]
+    }, ...
+  ]
+}

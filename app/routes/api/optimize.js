@@ -59,8 +59,8 @@ router.route('/')
 
           var i;
           var course = {};
-          for (i = 0; i < 6; i++) {
-          //for (i = 0; i < parsed.length; i++) {
+          //for (i = 0; i < 50; i++) {
+          for (i = 0; i < parsed.length; i++) {
             course = parsed[i];
             totalCourses.push(course.course_code);
             //coursesCredits.push(course.credits); //TODO uncomment
@@ -86,9 +86,7 @@ router.route('/')
           stream.once('open', function(fd) {
 
             stream.write("$Set NUM_MAX_CREDITOS "+maxCredits+"\n");
-            console.log("what1");
           	stream.write("$Set NUM_MAX_SEMESTRES "+maxSemesters+"\n");
-            console.log("what2");
           	stream.write("Sets\n");
           	//stream.write("materias_i   materias por codigo / ISIS1001, ISIS1002, ISIS1003, FISI1002, MATE1001, MATE1002 /\n");
             stream.write("materias_i   materias por codigo / " + materias_i + " /\n");
@@ -102,23 +100,25 @@ router.route('/')
             stream.write(header_requisitos+"\n");
             var j = 0; var k = 0;
             var numSpaces = 0;
+            var lineToWrite = "";
             for (i = 0; i < totalCourses.length; i++) {
               if (totalCourses[i].length == 8){
-                stream.write(totalCourses[i]+"  ");
+                lineToWrite += totalCourses[i]+"  ";
               }
               else{
-                stream.write(totalCourses[i]+" ");
+                lineToWrite += totalCourses[i]+" ";
               }
 
               for (j = 0; j < totalCourses.length; j++) {
                 //totalCourses[j]
                 numSpaces = totalCourses[j].length;
-                stream.write("0");
+                lineToWrite += "0";
                 for (k = 0; k < numSpaces; k++){
-                  stream.write(" ");
+                  lineToWrite += " ";
                 }
               }
-              stream.write("\n");
+              stream.write(lineToWrite+"\n");
+              lineToWrite = "";
             }
           	// stream.write("ISIS1001 0        0        0        0        0        0\n");
           	// stream.write("ISIS1002 1        0        0        0        0        0\n");
@@ -204,7 +204,7 @@ router.route('/')
               courses.push(line_elements[0]);
               sem = line_elements[line_elements_length - 1];
 
-              n = parseInt(sem.split("")[1]);
+              n = parseInt(sem.split("s")[1]);
               semesters.push(n);
 
               if (n >= numSemesters){
@@ -214,22 +214,28 @@ router.route('/')
 
             // TRANSFORM RESULTS TO RESPONSE
             var response = {};
-            var n = 0;
+            response.numSemesters = numSemesters;
+
+            var responseSemesters = [];
+            var semesterCourses = [];
+            var sem = {};
+            var j = 0;
             for (i = 0; i < numSemesters; i++) {
-              n = i+1;
-              response["semester"+n] = [];
+              sem.num = i+1;
+
+              for (j = 0; j < courses.length; j++) {
+                if (semesters[j] == i+1){
+                  semesterCourses.push(courses[j]);
+                }
+              }
+              sem.courses = semesterCourses;
+              semesterCourses = [];
+
+              responseSemesters.push(sem);
+              sem = {};
             }
 
-            var c = "";
-            var s = 0;
-            var sem = []
-            for (i = 0; i < courses.length; i++) {
-              c = courses[i];
-              s = semesters[i];
-              sem = response["semester"+s];
-              sem.push(c);
-              response["semester"+s] = sem;
-            }
+            response.semesters = responseSemesters;
 
             // send it to the Angular interface
             res.json(response);

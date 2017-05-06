@@ -5,10 +5,20 @@
       <br />
 
       <div class="row">
+        <span class="col-md-2" ng-repeat="a in courses.courses">
+          <label for="{{a.course_code}}">
+            <input type="checkbox" value="{{a.course_code}}"  ng-model="courses.selected[a.course_id]" name="group" id="{{a.course_code}}" />
+            {{a.course_code}}
+          </label>
+        </span>
+
+
+      </div>
+      <div class="row">
         <br />
         <div class="col-md-12" style="text-align:right">
           <div class="btn-group">
-            <a class="btn btn-success" href="plan.html">Generar</a>
+            <a class="btn btn-success" ui-sref="graph" ng-click="courses.generate()">Generar</a>
           </div>
         </div>
       </div>
