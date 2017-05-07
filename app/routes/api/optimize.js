@@ -27,8 +27,8 @@ router.route('/')
     var maxCredits = jsonData.maxCredits;
 
     var maxSemesters = 30;
-    //var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
-    var optimizerPath = "C:\\";
+    var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
+    //var optimizerPath = "C:\\";
     var optimizerFilename = "optimizador.gms";
     var resultsFilename = "resultados.txt";
 
@@ -84,7 +84,7 @@ router.route('/')
           http.get({
               host: '127.0.0.1',
               port: '8080',
-              path: "/api/prerrequisites?program1="+firstProgram+"&program2="+secondProgram
+              path: "/api/prerequisites?program1="+firstProgram+"&program2="+secondProgram
           }, function(response) {
 
             var prerrequisites = JSON.parse(body);
@@ -121,8 +121,6 @@ router.route('/')
                 prerrequisitesMatrix.push(lineZeros);
               }
             }
-
-            console.log(prerrequisitesMatrix);
 
             // CALL GAMS
             // writeGAMS:
