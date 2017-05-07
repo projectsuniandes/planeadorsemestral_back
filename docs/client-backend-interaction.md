@@ -6,6 +6,7 @@
 
 Cuando se requiera hacer un listado de las materias combinadas que tienen que ver 2 o más programas. Esto retorna:
 
+```json
 [
   {
     "course_code": "FISI2026",
@@ -24,11 +25,13 @@ Cuando se requiera hacer un listado de las materias combinadas que tienen que ve
   },
   ...
 ]
+```
 
 *GET api/prerequisites?program1=FISI&program2=ISIS&program3=IELE*
 
 Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materias course1_codes abren la materia course2_code.
 
+```json
 [
   {
     "course_code": "FISI2026",
@@ -44,11 +47,13 @@ Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los 
   },
   ...
 ]
+```
 
 *POST api/optimize*
 
 Cuando el cliente quiere realizar el proceso de optimización. El JSON del POST tendrá el siguiente formato:
 
+```json
 {
   "firstProgram": "ISIS",
   "secondProgram": "FISI",
@@ -57,9 +62,11 @@ Cuando el cliente quiere realizar el proceso de optimización. El JSON del POST 
   "minCredits": 17,
   "maxCredits": 25
 }
+```
 
 El return del post es:
 
+```json
 {
   "numSemesters": 5,
   "semesters": [
@@ -112,22 +119,15 @@ El return del post es:
     }, ...
   ]
 }
+```
 
-Para obtener
-
-GET *api/cleaning/requisites?program1=FISI&program2=ISIS
+*GET api/cleaning/requisites?program1=FISI&program2=ISIS*
 
 Obtiene lista de correquisitos y prerequisitos de los cursos de ambos programas academicos
 
-En caso de solo querer corequisites o prerequisitos, la URI cambia así:
-
-GET *api/cleaning/prerequisites?program1=FISI&program2=ISIS
-
-GET *api/cleaning/corequisites?program1=FISI&program2=ISIS
-
-
-
-{
+```json
+[
+  {
     "course_code": "FISI4042",
     "prerequisites": [
       "FISI330",
@@ -149,8 +149,14 @@ GET *api/cleaning/corequisites?program1=FISI&program2=ISIS
     ],
     "corequisites": []
   },
-  {
-    "course_code": "ISIS1205L",
-    "prerequisites": [
-      "ISIS1204"
-    ],
+  ...
+]
+```
+
+*GET api/cleaning/prerequisites?program1=FISI&program2=ISIS*
+
+En caso de solo querer prerequisitos.
+
+*GET api/cleaning/corequisites?program1=FISI&program2=ISIS*
+
+En caso de solo querer corequisitos.
