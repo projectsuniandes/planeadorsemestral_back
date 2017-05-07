@@ -106,7 +106,7 @@ function getProgramId(programName){
   let answer = "asadasdasd";
 
     query(sql, function(err, result) {
-      console.log('entra query');
+      //console.log('entra query');
       if (err){
         console.log(err);
       }

@@ -25,7 +25,7 @@ Cuando se requiera hacer un listado de las materias combinadas que tienen que ve
   ...
 ]
 
-*GET api/prerrequisites?program1=FISI&program2=ISIS&program3=IELE*
+*GET api/prerequisites?program1=FISI&program2=ISIS&program3=IELE*
 
 Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materias course1_codes abren la materia course2_code.
 

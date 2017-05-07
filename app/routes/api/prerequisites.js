@@ -20,7 +20,6 @@ router.route('/')
 .get(function(req, res) {
     // extract programs from query params and save them in programs
 
-
     let programs = [];
     if(req.query.program1){
       //console.log("considera programa 1");
@@ -34,7 +33,6 @@ router.route('/')
       //console.log("considera programa 3");
       programs.push("'" +req.query.program3 + "'");
     }
-
 
 
     let sql_subquery  = "SELECT DISTINCT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
@@ -71,18 +69,11 @@ router.route('/')
         }
         //console.log(map);
         map.forEach(function(value, key) {
-          console.log("entra");
           let prerequisite_entry = { course_code: key  , prerequisites: value };
           prerequisites.push(prerequisite_entry);
         });
 
-
-
-
-
         return res.json(prerequisites);
-
-
 
       });
   });
