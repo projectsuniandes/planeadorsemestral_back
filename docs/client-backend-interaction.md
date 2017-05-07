@@ -112,3 +112,45 @@ El return del post es:
     }, ...
   ]
 }
+
+Para obtener
+
+GET *api/cleaning/requisites?program1=FISI&program2=ISIS
+
+Obtiene lista de correquisitos y prerequisitos de los cursos de ambos programas academicos
+
+En caso de solo querer corequisites o prerequisitos, la URI cambia así:
+
+GET *api/cleaning/prerequisites?program1=FISI&program2=ISIS
+
+GET *api/cleaning/corequisites?program1=FISI&program2=ISIS
+
+
+
+{
+    "course_code": "FISI4042",
+    "prerequisites": [
+      "FISI330",
+      "FISI340"
+    ],
+    "corequisites": []
+  },
+  {
+    "course_code": "FISI3801",
+    "prerequisites": [
+      "FISI330"
+    ],
+    "corequisites": []
+  },
+  {
+    "course_code": "ISIS1304",
+    "prerequisites": [
+      "ISIS1205"
+    ],
+    "corequisites": []
+  },
+  {
+    "course_code": "ISIS1205L",
+    "prerequisites": [
+      "ISIS1204"
+    ],
