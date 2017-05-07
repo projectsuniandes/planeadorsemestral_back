@@ -27,7 +27,7 @@ router.route('/')
     var maxCredits = jsonData.maxCredits;
 
     var maxSemesters = 30;
-    var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
+    var optimizerPath = "C:\\Users\\infracom\\Desktop\\";
     var optimizerFilename = "optimizador.gms";
     var resultsFilename = "resultados.txt";
 

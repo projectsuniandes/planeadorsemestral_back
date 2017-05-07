@@ -5,12 +5,32 @@
       <br />
 
       <div class="row">
-        <span class="col-md-2" ng-repeat="a in courses.courses">
-          <label for="{{a.course_code}}">
-            <input type="checkbox" value="{{a.course_code}}"  ng-model="courses.selected[a.course_id]" name="group" id="{{a.course_code}}" />
-            {{a.course_code}}
-          </label>
-        </span>
+        <input placeholder="Buscar curso..." class="col-md-12 form-control" type="text" ng-model="search">
+        <br>
+        <div class="col-md-6 col-sm-6">
+          
+        
+        <h3>
+          Cursos
+        </h3>
+        <ul>
+          <li ng-repeat="a in courses.courses | filter: search | orderBy: 'course_code' ">
+            <input type="checkbox" value="{{a.course_code}}" ng-true-value="1" ng-false-value="0"  ng-model="courses.selected[a.course_code]"  id="{{a.course_code}}" ng-click="courses.toggleSelection(a.course_code)">
+            {{a.course_code}}:{{a.name}}
+          </li>
+        </ul>
+        </div>
+        <div class="col-md-6 col-sm-6 ">
+        <h3>
+          Seleccionados
+        </h3>
+        <ul class="col-md-6">
+          <li ng-repeat="b in courses.selectedCourses">
+            
+            <label>{{b}}</label>
+          </li>
+        </ul>
+        </div>
 
 
       </div>

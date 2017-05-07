@@ -7,7 +7,7 @@ angular.module('app.routes', ['ui.router'])
   $stateProvider
     .state('home', {
        url         : "/home",
-       templateUrl : "app/views/pages/optimizer.tpl.html",
+       templateUrl : "app/views/pages/home.tpl.html",
        controller  : "mainController as main"
      })
      .state('courses', {
@@ -19,5 +19,14 @@ angular.module('app.routes', ['ui.router'])
        url         : "/graph",
        templateUrl : "app/views/pages/graph.tpl.html",
        controller  : "coursesController as graph"
+     })
+     .state('preferences', {
+      url          : "/preferences",
+      templateUrl  : "app/views/pages/optimizer.tpl.html",
+      controller   : "mainController as main"
+     }).
+     state('contact', {
+      url          : "/contact",
+      templateUrl  : "app/views/pages/contact.tpl.html"
      });
 })

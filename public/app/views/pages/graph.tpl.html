@@ -5,19 +5,36 @@
       <br />
       <div class="row">
 
-      <p ng-repeat="a in graph.data">
-        semester
-        {{a.semester1}}
-      </p>
 
-
+        <div class="col-md-offset-1 col-md-10">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="semestre"> Semestre</th>
+                <th class="materias"> Materias</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="a in graph.semesters">
+                <td>{{a.num}}</td>
+                <td>
+                  <div class="circle fisica" ng-repeat="b in a.courses">
+                    {{b}}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div> 
+      
+      
 
       </div>
       <div class="row">
         <br />
         <div class="col-md-12" style="text-align:right">
           <div class="btn-group">
-            <a class="btn btn-success" ui-sref="courses">Back</a>
+            <a class="btn btn-success" ng-click="graph.generate()">Generate</a>
           </div>
         </div>
       </div>

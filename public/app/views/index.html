@@ -20,8 +20,7 @@
         ================================================== -->
         <!-- Twitter Bootstrs CSS -->
         <link rel="stylesheet" href="./../../assets/css/bootstrap.min.css">
-        <!-- Ionicons Fonts Css -->
-        <link rel="stylesheet" href="./../../assets/css/ionicons.min.css">
+        <script src="https://use.fontawesome.com/be36c20b93.js"></script>
         <!-- animate css -->
         <link rel="stylesheet" href="./../../assets/css/animate.css">
         <!-- Hero area slider css-->
@@ -35,6 +34,8 @@
         <!-- responsive css -->
         <link rel="stylesheet" href="./../../assets/css/responsive.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
+        <link rel="stylesheet" type="text/css" href="./../../assets/css/classtable.css">
+        <!-- table css file -->
 
         <!-- Template Javascript Files
         ================================================== -->
@@ -106,10 +107,10 @@
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <div class="main-menu">
                         <ul class="nav navbar-nav navbar-right">
-                          <li><a href="index.html" >Home</a></li>
-                          <li><a href="preferences.html">Preferencias</a></li>
-                          <li><a href="plan.html">Plan</a></li>
-                          <li><a href="contact.html">Contacto</a></li>
+                          <li><a ui-sref="home" >Inicio</a></li>
+                          <li><a ui-sref="preferences">Preferencias</a></li>
+                          <li><a ui-sref="graph">Plan</a></li>
+                          <li><a ui-sref="contact">Contacto</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -117,31 +118,7 @@
             </div>
         </header>
 
-        <!--
-        ==================================================
-            Global Page Section Start
-        ================================================== -->
-        <section class="global-page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="block">
-                            <h2>Preferencias</h2>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <a href="index.html">
-                                        <i class="ion-ios-home"></i>
-                                        Home
-                                    </a>
-                                </li>
-                                <li class="active">Preferencias</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        
 
         <!--
         ==================================================
@@ -158,29 +135,29 @@
         <footer id="footer">
             <div class="container">
                 <div class="col-md-8">
-                    <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
+                    <p class="copyright">Copyright: <span>2017</span> .  <a href="http://www.github.com/projectsuniandes">ACCIO</a></p>
                 </div>
                 <div class="col-md-4">
                     <!-- Social Media -->
                     <ul class="social">
                         <li>
-                            <a href="#" class="Facebook">
-                                <i class="ion-social-facebook"></i>
+                            <a href="https://github.com/projectsuniandes" class="Facebook">
+                                <i class="fa fa-github" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="Twitter">
-                                <i class="ion-social-twitter"></i>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="Linkedin">
-                                <i class="ion-social-linkedin"></i>
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
                             <a href="#" class="Google Plus">
-                                <i class="ion-social-googleplus"></i>
+                                <i class="fa fa-google" aria-hidden="true"></i>
                             </a>
                         </li>
 
@@ -188,6 +165,9 @@
                 </div>
             </div>
         </footer> <!-- /#footer -->
+
+
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
         <script>
