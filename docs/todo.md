@@ -7,3 +7,5 @@
 * revisar que ICYA y IELE tienen 2 departamentos incluidos 
 
 	- sol actual: el codigo representa solo un programa
+
+* revisar CIDE
