@@ -2,7 +2,7 @@
 
 ## API
 
-*GET api/merge/correcto?program1=FISI&program2=ISIS&program3=IELE*
+* *GET api/merge/correcto?program1=FISI&program2=ISIS&program3=IELE*
 
 Cuando se requiera hacer un listado de las materias combinadas que tienen que ver 2 o más programas. Esto retorna:
 
@@ -22,12 +22,11 @@ Cuando se requiera hacer un listado de las materias combinadas que tienen que ve
     "course_code": "ISIS2203",
     "course_name": "INFRAESTRUCTURA COMPUTACIONAL",
     "credits": "3"
-  },
-  ...
+  }
 ]
 ```
 
-*GET api/prerequisites?program1=FISI&program2=ISIS&program3=IELE*
+* *GET api/prerequisites?program1=FISI&program2=ISIS&program3=IELE*
 
 Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materias course1_codes abren la materia course2_code.
 
@@ -44,12 +43,11 @@ Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los 
   {
     "course_code": "FISI2026",
     "prerrequisites": ["ISIS1204", "ISIS1204", "ISIS1204"]
-  },
-  ...
+  }
 ]
 ```
 
-*POST api/optimize*
+* *POST api/optimize*
 
 Cuando el cliente quiere realizar el proceso de optimización. El JSON del POST tendrá el siguiente formato:
 
@@ -116,7 +114,7 @@ El return del post es:
         "MATE1214",
         "QUIM1101"
       ]
-    }, ...
+    }
   ]
 }
 ```
@@ -148,15 +146,14 @@ Obtiene lista de correquisitos y prerequisitos de los cursos de ambos programas 
       "ISIS1205"
     ],
     "corequisites": []
-  },
-  ...
+  }
 ]
 ```
 
-*GET api/cleaning/prerequisites?program1=FISI&program2=ISIS*
+* *GET api/cleaning/prerequisites?program1=FISI&program2=ISIS*
 
 En caso de solo querer prerequisitos.
 
-*GET api/cleaning/corequisites?program1=FISI&program2=ISIS*
+* *GET api/cleaning/corequisites?program1=FISI&program2=ISIS*
 
 En caso de solo querer corequisitos.
