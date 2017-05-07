@@ -77,8 +77,8 @@ router.route('/')
         programs.push("'" +req.query.program3 + "'");
       }
 
-      let sql  = "SELECT DISTINCT courses_in_programs.course_code, courses_aux.course_name, courses_in_programs.program_id,";
-      sql += " courses_in_programs.program_code, courses_aux.credits FROM courses_in_programs INNER JOIN courses_aux";
+      let sql  = "SELECT DISTINCT courses_in_programs.course_code, courses_aux.course_name,";
+      sql += " courses_aux.credits FROM courses_in_programs INNER JOIN courses_aux";
       sql+= " ON courses_in_programs.course_code = courses_aux.course_code";
       if(req.query.program1){
           sql += " WHERE courses_in_programs.program_code=" + programs[0];
