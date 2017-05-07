@@ -46,8 +46,8 @@ router.route('/')
         sql_subquery += " OR programs.program_code=" + programs[2];
     }
 
-    let sql_bigquery = "SELECT course_dependencies.course1_code, course_dependencies.course2_code FROM ";
-    sql_bigquery += "(" + sql_subquery + ") " + " AS merged_courses INNER JOIN course_dependencies ON course_dependencies.course2_code = merged_courses.course_code";
+    let sql_bigquery = "SELECT course_prerequisites.course1_code, course_prerequisites.course2_code FROM ";
+    sql_bigquery += "(" + sql_subquery + ") " + " AS merged_courses INNER JOIN course_prerequisites ON course_prerequisites.course2_code = merged_courses.course_code";
 
     console.log(sql_subquery);
       query(sql_bigquery, function(err, result) {
