@@ -56,7 +56,34 @@ router.route('/')
         if (err){
           console.log(err);
         }
-        return res.json(result);
+        var map = new Map();
+        let prerequisites = [];
+        for(let i = 0; i < result.length; i++){
+            let current_prerequisite = result[i];
+            if(map.has(current_prerequisite.course2_code)){
+              let current_list = map.get(current_prerequisite.course2_code);
+              current_list.push(current_prerequisite.course1_code);
+            }else{
+              let current_list = [];
+              current_list.push(current_prerequisite.course1_code);
+              map.set(current_prerequisite.course2_code, current_list);
+            }
+        }
+        //console.log(map);
+        map.forEach(function(value, key) {
+          console.log("entra");
+          let prerequisite_entry = { course_code: key  , prerequisites: value };
+          prerequisites.push(prerequisite_entry);
+        });
+
+
+
+
+
+        return res.json(prerequisites);
+
+
+
       });
   });
 module.exports = router;
