@@ -1,10 +1,10 @@
 # planeadorsemestral_back
 
-Cuando se requiera hacer un listado de las materias combinadas de 2 o más programas, el frontend podrá pedirlas a la siguiente ruta:
+## API
 
 *GET api/merge/correcto?program1=FISI&program2=ISIS&program3=IELE*
 
-Y esto retorna:
+Cuando se requiera hacer un listado de las materias combinadas que tienen que ver 2 o más programas. Esto retorna:
 
 [
   {
@@ -25,7 +25,29 @@ Y esto retorna:
   ...
 ]
 
-Cuando el cliente desde el front envía sus preferencias de optimizacion, el JSON del POST tendrá el siguiente formato:
+*GET api/prerrequisites?program1=FISI&program2=ISIS&program3=IELE*
+
+Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materia course1_code abre la materia course2_code.
+
+[
+  {
+    "course1_code": "FISI2026",
+    "course2_code": "ISIS1204"
+  },
+  {
+    "course1_code": "FISI2026",
+    "course2_code": "ISIS1204"
+  },
+  {
+    "course1_code": "FISI2026",
+    "course2_code": "ISIS1204"
+  },
+  ...
+]
+
+*POST api/optimize*
+
+Cuando el cliente quiere realizar el proceso de optimización. El JSON del POST tendrá el siguiente formato:
 
 {
   "firstProgram": "ISIS",
@@ -35,8 +57,6 @@ Cuando el cliente desde el front envía sus preferencias de optimizacion, el JSO
   "minCredits": 17,
   "maxCredits": 25
 }
-
-*POST api/optimize*
 
 El return del post es:
 
