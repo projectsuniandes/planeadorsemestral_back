@@ -46,7 +46,7 @@ router.route('/')
     http.get({
         host: '127.0.0.1',
         port: '8080',
-        path: "/api/merge?program1="+firstProgram+"&program2="+secondProgram
+        path: "/api/merge/correcto?program1="+firstProgram+"&program2="+secondProgram
     }, function(response) {
         // Continuously update stream with data
         var body = '';
@@ -59,12 +59,10 @@ router.route('/')
 
           var i;
           var course = {};
-          //for (i = 0; i < 50; i++) {
           for (i = 0; i < parsed.length; i++) {
             course = parsed[i];
             totalCourses.push(course.course_code);
-            //coursesCredits.push(course.credits); //TODO uncomment
-            coursesCredits.push(3); //TODO remove this
+            coursesCredits.push(course.credits);
           }
 
           //Make strings for GAMS
