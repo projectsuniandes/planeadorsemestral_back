@@ -119,7 +119,6 @@ router.route('/')
                     indexCourses1 = courses1.indexOf(totalCourses[j]);
                     if (indexCourses1 > -1){
                       lineZeros2.push("1");
-                      console.log("materia2: "+course2+" materia1: "+courses1[indexCourses1]);
                     }
                     else{
                       lineZeros2.push("0");
