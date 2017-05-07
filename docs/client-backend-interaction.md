@@ -27,20 +27,20 @@ Cuando se requiera hacer un listado de las materias combinadas que tienen que ve
 
 *GET api/prerrequisites?program1=FISI&program2=ISIS&program3=IELE*
 
-Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materia course1_code abre la materia course2_code.
+Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los programas program1, program2, program3. La materias course1_codes abren la materia course2_code.
 
 [
   {
-    "course1_code": "FISI2026",
-    "course2_code": "ISIS1204"
+    "course2_code": "FISI2026",
+    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   {
-    "course1_code": "FISI2026",
-    "course2_code": "ISIS1204"
+    "course2_code": "FISI2026",
+    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   {
-    "course1_code": "FISI2026",
-    "course2_code": "ISIS1204"
+    "course2_code": "FISI2026",
+    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   ...
 ]
