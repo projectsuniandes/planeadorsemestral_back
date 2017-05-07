@@ -35,7 +35,7 @@ router.route('/')
       programs.push("'" +req.query.program3 + "'");
     }
 
-    let sql  = "SELECT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
+    let sql  = "SELECT DISTINCT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
     if(req.query.program1){
         sql += " WHERE programs.program_code=" + programs[0];
     }
@@ -77,7 +77,7 @@ router.route('/')
         programs.push("'" +req.query.program3 + "'");
       }
 
-      let sql  = "SELECT courses_in_programs.course_code, courses_aux.course_name, courses_in_programs.program_id,";
+      let sql  = "SELECT DISTINCT courses_in_programs.course_code, courses_aux.course_name, courses_in_programs.program_id,";
       sql += " courses_in_programs.program_code, courses_aux.credits FROM courses_in_programs INNER JOIN courses_aux";
       sql+= " ON courses_in_programs.course_code = courses_aux.course_code";
       if(req.query.program1){
