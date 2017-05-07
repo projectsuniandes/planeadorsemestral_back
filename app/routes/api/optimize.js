@@ -27,12 +27,8 @@ router.route('/')
     var maxCredits = jsonData.maxCredits;
 
     var maxSemesters = 30;
-<<<<<<< HEAD
-    var optimizerPath = "C:\\Users\\infracom\\Desktop\\";
-=======
     var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
     //var optimizerPath = "C:\\";
->>>>>>> e523682171ae573f32dafce1a4ddb024fddeec04
     var optimizerFilename = "optimizador.gms";
     var resultsFilename = "resultados.txt";
 
@@ -88,7 +84,7 @@ router.route('/')
           http.get({
               host: '127.0.0.1',
               port: '8080',
-              path: "/api/prerequisites?program1="+firstProgram+"&program2="+secondProgram
+              path: "/api/cleaning/requisites?program1="+firstProgram+"&program2="+secondProgram
           }, function(response2) {
 
             var body2 = '';

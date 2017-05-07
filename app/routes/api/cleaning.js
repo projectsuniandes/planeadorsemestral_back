@@ -343,7 +343,7 @@ router.route('/prerequisites')
 
                 //merge de co con prerequisites
                 let prodFinal = [];
-                console.log(map);
+                //console.log(map);
                 var mapLau = new Map();
                 map.forEach(function(value, key){
                   let cor = [];
