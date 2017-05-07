@@ -31,16 +31,16 @@ Cuando se requiera obtener los prerrequisitos de las materias ofrecidas por los 
 
 [
   {
-    "course2_code": "FISI2026",
-    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
+    "course_code": "FISI2026",
+    "prerrequisites": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   {
-    "course2_code": "FISI2026",
-    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
+    "course_code": "FISI2026",
+    "prerrequisites": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   {
-    "course2_code": "FISI2026",
-    "course1_codes": ["ISIS1204", "ISIS1204", "ISIS1204"]
+    "course_code": "FISI2026",
+    "prerrequisites": ["ISIS1204", "ISIS1204", "ISIS1204"]
   },
   ...
 ]
