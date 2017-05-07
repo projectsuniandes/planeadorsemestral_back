@@ -94,8 +94,8 @@ router.route('/')
             var i;
             for (i = 0; i < prerrequisites.length; i++) {
               prerrequisite = prerrequisites[i];
-              course2 = prerrequisite.course2_code;
-              courses1 = prerrequisite.course1_codes;
+              course2 = prerrequisite.course_code;
+              courses1 = prerrequisite.prerrequisites;
 
               coursesDict.course2 = courses1;
             }
