@@ -27,7 +27,7 @@ router.route('/')
     var maxCredits = jsonData.maxCredits;
 
     var maxSemesters = 30;
-    var optimizerPath = "C:\\Users\\infracom\\Desktop\\";
+    var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
     //var optimizerPath = "C:\\";
     var optimizerFilename = "optimizador.gms";
     var resultsFilename = "resultados.txt";
@@ -215,11 +215,13 @@ router.route('/')
               	stream.write("funcion_objetivo                                         funcion objetivo\n");
               	stream.write("no_repitis_materia(materias_i)                           una materia se aprueba solo una vez\n");
               	stream.write("creditos_maximos(semestres_j)                            numero maximo de creditos al semestres\n");
+                stream.write("correquisitos(materias_i, materias_k, semestres_j)       coreqs se deben cumplir\n");
               	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)      prereqs se deben cumplir\n");
               	stream.write("prerrequisitos_prim(materias_i, materias_k, semestres_j) no se puede ver una materia que tenga prerequisito en primer semestre;\n");
               	stream.write("funcion_objetivo                                 ..      n =E= sum((semestres_j), (sum((materias_i), x(materias_i, semestres_j)))*power(ord(semestres_j),5) );\n");
               	stream.write("no_repitis_materia(materias_i)                   ..      sum( (semestres_j), x(materias_i, semestres_j) ) =E= 1;\n");
               	stream.write("creditos_maximos(semestres_j)                    ..      sum( (materias_i), x(materias_i, semestres_j)*creditos(materias_i) ) =L= %NUM_MAX_CREDITOS%;\n");
+                stream.write("correquisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 2)                                  ..      sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =L= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)), x(materias_k, semestres_l) );\n");
               	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) ge 2)       ..      sum( semestres_l$(ord(semestres_l) ge 2 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =L= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)-1), x(materias_k, semestres_l) );\n");
               	stream.write("prerrequisitos_prim(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) eq 1)  ..      x(materias_i, semestres_j) =E= 0;\n");
               	stream.write("Model modelo /all/ ;\n");
