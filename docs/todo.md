@@ -1,4 +1,4 @@
-﻿# TODO:
+﻿# TODO
 
 * revisar las materias cuyos pres tienen materias opcionales (i.e. GEOQUÍMICA depende de: GEOC 1022 Y ( (QUIM 1101 Y QUIM 1102) O QUIM 1103) Y FISI 1028*)
 
@@ -13,10 +13,6 @@
 * revisar restricciones de nivel y de semestre
 
 * ponerle colores por carrera
-
-* ponerle num creditos por semestre en otra columna
-
-* no se puede ver mas de 20.5 creditos en primer semestre
 
 * por ahora las electivas se ponen fijas (se escogio una electiva al azar y se fijo con sus prereqs
 

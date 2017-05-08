@@ -1,6 +1,4 @@
-# planeadorsemestral_back
-
-## API
+# API
 
 * *GET api/merge/correcto?program1=FISI&program2=ISIS&program3=IELE*
 
