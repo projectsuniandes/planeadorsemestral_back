@@ -19,12 +19,16 @@
                 <td>{{a.num}}</td>
                 <td>
                   <div class="circle fisica" ng-repeat="b in a.courses">
-                    {{b}}
+                    <div > {{b}}</div>
+                   
                   </div>
                 </td>
               </tr>
+
             </tbody>
           </table>
+          <h2 ng-show="graph.totalCredits !=0">Créditos totales</h2>
+          <p  >{{graph.totalCredits}}</p>
         </div> 
       
       
