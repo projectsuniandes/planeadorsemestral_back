@@ -29,7 +29,12 @@
     <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Ingrese sus preferencias</h2>
     <br />
     <div class="row">
-      <div class="col-md-3" style="text-align:left">
+
+      <div class="col-md-1" style="text-align:left">
+        <!--FILLING-->
+      </div>
+
+      <div class="col-md-4" style="text-align:left">
         <div class="row">
           <label for="sel1">Seleccione su primera carrera:</label>
         </div>
@@ -44,13 +49,10 @@
         </div>
         <div class="row">
           <select name="program2" id="program2" ng-model="optimizer.program2" class="form-control">
-            
             <option ng-repeat="a in optimizer.programs | filter: program | orderBy: 'name'" value={{a.program_code}}>{{a.name}}</option>
           </select>
         </div>
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-3" style="text-align:left">
+        <br />
         <div class="row">
           <label for="sel3">Seleccione una opción:</label>
         </div>
@@ -60,30 +62,30 @@
           </select>
         </div>
       </div>
-      <div class="col-md-1"></div>
+
+      <div class="col-md-1" style="text-align:left">
+        <!--FILLING-->
+      </div>
 
       <div class="col-md-4" style="text-align:left">
         <div class="row">
           <label for="ex2">Seleccione número de créditos mínimos:</label>
         </div>
-        <div class="row center">
-            <input type="number" class="form-control" name="" id="" ng-model="optimizer.minCredits">
+        <div class="row">
+          <input type="number" class="form-control" name="" id="" ng-model="optimizer.minCredits">
         </div>
-      </div>
-      
-      <div class="col-md-4" style="text-align:left">
+        <br />
         <div class="row">
           <label for="ex2">Seleccione número de créditos máximos:</label>
         </div>
-        <div class="row center">
-            <input type="number" class="form-control" name="" id="" ng-model="optimizer.maxCredits">
+        <div class="row">
+          <input type="number" class="form-control" name="" id="" ng-model="optimizer.maxCredits">
         </div>
       </div>
-
-    
     </div>
+
     <br />
-   
+
     <div class="row">
       <br />
       <div class="col-md-12" style="text-align:right">
