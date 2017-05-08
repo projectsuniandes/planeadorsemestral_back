@@ -22,6 +22,8 @@ angular.module('coursesCtrl', ['coursesService'])
         for (var j = 0; j < semActual.credits.length; j++) {
           vm.totalCredits+=semActual.credits[j];
         }
+        semActual.totalCredits= vm.totalCredits;
+        vm.totalCredits=0;
       }
       console.log(vm.totalCredits);
      
