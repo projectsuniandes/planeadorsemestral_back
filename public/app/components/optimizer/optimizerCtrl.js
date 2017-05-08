@@ -10,8 +10,8 @@ angular.module('optimizerCtrl', ['optimizerService'])
     })
   }
   vm.getPrograms();
-  vm.setPrograms = function(program1,program2, opcion, maxCredits){
-    Courses.setPrograms(program1, program2, opcion, maxCredits);
+  vm.setPrograms = function(program1,program2, opcion, maxCredits, minCredits){
+    Courses.setPrograms(program1, program2, opcion, maxCredits, minCredits);
   }
 
 })
