@@ -95,24 +95,31 @@ router.route('/')
               var prerrequisites = JSON.parse(body2);
               var prerrequisite = {};
               var coursesDict = {};
-              var courses1 = []; var course2 = "";
+              var courses1 = []; var courses1Correq = [];
+              var course2 = "";
+              var coursesDictCorreq = {};
               var i;
 
               for (i = 0; i < prerrequisites.length; i++) {
                 prerrequisite = prerrequisites[i];
                 course2 = prerrequisite.course_code;
                 courses1 = prerrequisite.prerequisites;
+                courses1Correq = prerrequisite.corequisites;
 
                 coursesDict[course2] = courses1;
+                coursesDictCorreq[course2] = courses1Correq;
               }
 
               var prerrequisitesMatrix = [];
+              var correquisitesMatrix = [];
               var lineZeros = new Array(numTotalCourses+1).join('0').split('');
               var lineZeros2 = [];
               var j; var indexCourses1 = -1;
               for (i = 0; i < numTotalCourses; i++) {
                 course2 = totalCourses[i];
                 courses1 = coursesDict[course2];
+                courses1Correq = coursesDictCorreq[course2];
+
                 if(courses1){
                   lineZeros2 = [];
                   for (j = 0; j < numTotalCourses; j++) {
@@ -126,8 +133,25 @@ router.route('/')
                   }
                   prerrequisitesMatrix.push(lineZeros2);
                 }
-                else{
+                else {
                   prerrequisitesMatrix.push(lineZeros);
+                }
+
+                if(courses1Correq){
+                  lineZeros2 = [];
+                  for (j = 0; j < numTotalCourses; j++) {
+                    indexCourses1 = courses1Correq.indexOf(totalCourses[j]);
+                    if (indexCourses1 > -1){
+                      lineZeros2.push("2");
+                    }
+                    else{
+                      lineZeros2.push("0");
+                    }
+                  }
+                  correquisitesMatrix.push(lineZeros2);
+                }
+                else {
+                  correquisitesMatrix.push(lineZeros);
                 }
               }
 
@@ -159,7 +183,13 @@ router.route('/')
 
                   for (j = 0; j < numTotalCourses; j++) {
                     numSpaces = totalCourses[j].length;
-                    lineToWrite += prerrequisitesMatrix[i][j];
+                    if (prerrequisitesMatrix[i][j] == 1){
+                      lineToWrite += prerrequisitesMatrix[i][j];
+                    }
+                    else{
+                      lineToWrite += correquisitesMatrix[i][j];
+                    }
+
                     for (k = 0; k < numSpaces; k++){
                       lineToWrite += " ";
                     }
@@ -190,7 +220,7 @@ router.route('/')
               	stream.write("funcion_objetivo                                 ..      n =E= sum((semestres_j), (sum((materias_i), x(materias_i, semestres_j)))*power(ord(semestres_j),5) );\n");
               	stream.write("no_repitis_materia(materias_i)                   ..      sum( (semestres_j), x(materias_i, semestres_j) ) =E= 1;\n");
               	stream.write("creditos_maximos(semestres_j)                    ..      sum( (materias_i), x(materias_i, semestres_j)*creditos(materias_i) ) =L= %NUM_MAX_CREDITOS%;\n");
-              	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) ge 2)       ..      sum( semestres_l$(ord(semestres_l) ge 2 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =E= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)-1), x(materias_k, semestres_l) );\n");
+              	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) ge 2)       ..      sum( semestres_l$(ord(semestres_l) ge 2 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =L= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)-1), x(materias_k, semestres_l) );\n");
               	stream.write("prerrequisitos_prim(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) eq 1)  ..      x(materias_i, semestres_j) =E= 0;\n");
               	stream.write("Model modelo /all/ ;\n");
               	stream.write("option mip=CBC;\n");
