@@ -35,7 +35,7 @@ router.route('/prerequisites')
     }
 
 
-    let sql_subquery  = "SELECT DISTINCT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
+    let sql_subquery  = "SELECT DISTINCT course_code, courses_aux.course_name, program_id, program_code FROM courses_aux INNER JOIN programs ON courses_aux.program_id = programs.id";
     if(req.query.program1){
         sql_subquery += " WHERE programs.program_code=" + programs[0];
     }
@@ -134,7 +134,7 @@ router.route('/prerequisites')
       }
 
 
-      let sql_subquery  = "SELECT DISTINCT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
+      let sql_subquery  = "SELECT DISTINCT course_code, courses_aux.course_name, program_id, program_code FROM courses_aux INNER JOIN programs ON courses_aux.program_id = programs.id";
       if(req.query.program1){
           sql_subquery += " WHERE programs.program_code=" + programs[0];
       }
@@ -231,7 +231,7 @@ router.route('/prerequisites')
         }
 
 
-        let sql_subquery  = "SELECT DISTINCT course_code, courses.name, program_id, program_code FROM courses INNER JOIN programs ON courses.program_id = programs.id";
+        let sql_subquery  = "SELECT DISTINCT course_code, courses_aux.course_name, program_id, program_code FROM courses_aux INNER JOIN programs ON courses_aux.program_id = programs.id";
         if(req.query.program1){
             sql_subquery += " WHERE programs.program_code=" + programs[0];
         }
