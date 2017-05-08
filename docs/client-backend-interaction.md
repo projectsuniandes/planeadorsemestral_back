@@ -66,53 +66,170 @@ El return del post es:
 
 ```json
 {
-  "numSemesters": 5,
+  "numSemesters": 6,
   "semesters": [
     {
       "num": 1,
       "courses": [
+        "CLES0002",
         "FISI1002",
-        "FISI1003",
-        "FISI1029",
-        "FISI1038",
-        "FISI2026",
+        "FISI1018",
+        "FISI1019",
+        "FISI3701",
+        "ISIS1001",
         "ISIS1002",
         "ISIS1204",
-        "ISIS1206",
-        "ISIS1404",
-        "ISIS2008",
-        "ISIS2603",
-        "ISIS3302",
-        "ISIS3710",
-        "ISIS3990"
+        "LENG1501",
+        "LENG2999",
+        "LENG3999",
+        "MATE1203",
+        "MATE1207",
+        "MATE1214"
+      ],
+      "credits": [
+        3,
+        1,
+        3,
+        1,
+        1,
+        3,
+        0,
+        3,
+        0,
+        0,
+        0,
+        3,
+        3,
+        3
       ]
     },
     {
       "num": 2,
       "courses": [
-        "DERE1300",
-        "FISI1019",
+        "CBUA0001",
+        "CBUB0003",
         "FISI1028",
-        "FISI1048",
-        "ISIS1001",
-        "ISIS1304",
-        "ISIS2403",
-        "ISIS3204",
-        "MBIO1100"
+        "FISI1029",
+        "ISIS1104",
+        "ISIS1205",
+        "MATE1105",
+        "MBIO1100",
+        "QUIM1101"
+      ],
+      "credits": [
+        3,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        3
       ]
     },
     {
       "num": 3,
       "courses": [
+        "CBUA0003",
+        "CBUB0001",
+        "DERE1300",
+        "FISI1038",
         "FISI1039",
-        "IIND2106",
+        "ISIS1106",
+        "ISIS1206",
+        "ISIS1304",
+        "ISIS1404"
+      ],
+      "credits": [
+        3,
+        3,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "num": 4,
+      "courses": [
+        "CBUA0002",
+        "CBUB0002",
+        "CLES0001",
+        "FISI2026",
         "IIND2401",
         "ISIS1105",
+        "ISIS2304",
+        "ISIS2403",
+        "ISIS2603"
+      ],
+      "credits": [
+        3,
+        3,
+        3,
+        1,
+        3,
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "num": 5,
+      "courses": [
+        "FISI1003",
+        "FISI1048",
+        "FISI1049",
+        "FISI3098",
+        "IIND2106",
         "ISIS2007",
+        "ISIS2008",
+        "ISIS2503",
+        "ISIS3204",
+        "MATE1107"
+      ],
+      "credits": [
+        1,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "num": 6,
+      "courses": [
+        "FISI1005",
+        "FISI1860",
+        "FISI2007",
         "ISIS2203",
-        "MATE1203",
-        "MATE1214",
-        "QUIM1101"
+        "ISIS3007",
+        "ISIS3301",
+        "ISIS3302",
+        "ISIS3510",
+        "ISIS3710",
+        "ISIS3990"
+      ],
+      "credits": [
+        1,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        0
       ]
     }
   ]

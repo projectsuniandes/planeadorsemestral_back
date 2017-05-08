@@ -229,7 +229,7 @@ router.route('/')
               	stream.write("Solve modelo using mip minimizing n;\n");
               	stream.write("file GAMSresults /"+optimizerPath+resultsFilename+"/;\n");
               	stream.write("put GAMSresults;\n");
-              	stream.write("loop((materias_i,semestres_j)$(x.l(materias_i, semestres_j) eq 1), put materias_i.tl, @12, semestres_j.tl /);\n");
+              	stream.write("loop((materias_i,semestres_j)$(x.l(materias_i, semestres_j) eq 1), put materias_i.tl, @12, semestres_j.tl, @14, creditos(materias_i) /);\n");
 
                 stream.end();
               });
@@ -273,8 +273,9 @@ router.route('/')
 
                 var courses = [];
                 var semesters = [];
-                var sem = "";
-                var n = 0;
+                var credits = [];
+                var sem = ""; var cred = "";
+                var n = 0; var c=0;
                 var numSemesters = 0;
 
                 for (i = 0; i < lines.length-1; i++) { //-1 because the results has a \n at the end
@@ -282,11 +283,15 @@ router.route('/')
                   line_elements = line.split(" ");
                   line_elements_length = line_elements.length;
 
-                  courses.push(line_elements[0]);
-                  sem = line_elements[line_elements_length - 1];
-
+                  //TODO: arreglar estos indices (que el output de gams este separado solo por un espacio)
+                  sem = line_elements[3];
                   n = parseInt(sem.split("s")[1]);
+                  cred = line_elements[11];
+                  c = parseInt(cred.split("\r")[0]);
+
+                  courses.push(line_elements[0]);
                   semesters.push(n);
+                  credits.push(c);
 
                   if (n >= numSemesters){
                     numSemesters = n;
@@ -299,6 +304,7 @@ router.route('/')
 
                 var responseSemesters = [];
                 var semesterCourses = [];
+                var semesterCredits = [];
                 var sem = {};
                 var j = 0;
                 for (i = 0; i < numSemesters; i++) {
@@ -307,10 +313,14 @@ router.route('/')
                   for (j = 0; j < courses.length; j++) {
                     if (semesters[j] == i+1){
                       semesterCourses.push(courses[j]);
+                      semesterCredits.push(credits[j]);
                     }
                   }
                   sem.courses = semesterCourses;
+                  sem.credits = semesterCredits;
+
                   semesterCourses = [];
+                  semesterCredits = [];
 
                   responseSemesters.push(sem);
                   sem = {};
