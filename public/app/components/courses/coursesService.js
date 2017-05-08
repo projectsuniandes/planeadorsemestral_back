@@ -26,7 +26,7 @@ angular.module('coursesService', [])
     return $http.post('/api/optimize/', optimizeData);
   }
   coursesFactory.getCourses = function(){
-    return $http.get('/api/merge?program1='+program1+'&program2='+program2);
+    return $http.get('/api/merge/correcto?program1='+program1+'&program2='+program2);
 
   }
 
