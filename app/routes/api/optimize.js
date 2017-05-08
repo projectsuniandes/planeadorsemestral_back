@@ -26,6 +26,7 @@ router.route('/')
     var minCredits = jsonData.minCredits;
     var maxCredits = jsonData.maxCredits;
 
+    var maxCreditsFirstSemester = 20.5;
     var maxSemesters = 30;
     var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
     //var optimizerPath = "C:\\";
@@ -160,6 +161,7 @@ router.route('/')
               var stream = fs.createWriteStream(optimizerPath+optimizerFilename);
               stream.once('open', function(fd) {
                 stream.write("$Set NUM_MAX_CREDITOS "+maxCredits+"\n");
+                stream.write("$Set NUM_MAX_CREDITOS_PRIM "+maxCreditsFirstSemester+"\n");
               	stream.write("$Set NUM_MAX_SEMESTRES "+maxSemesters+"\n");
               	stream.write("Sets\n");
               	//stream.write("materias_i   materias por codigo / ISIS1001, ISIS1002, ISIS1003, FISI1002, MATE1001, MATE1002 /\n");
@@ -214,13 +216,15 @@ router.route('/')
               	stream.write("Equations\n");
               	stream.write("funcion_objetivo                                         funcion objetivo\n");
               	stream.write("no_repitis_materia(materias_i)                           una materia se aprueba solo una vez\n");
-              	stream.write("creditos_maximos(semestres_j)                            numero maximo de creditos al semestres\n");
+              	stream.write("creditos_maximos(semestres_j)                            numero maximo de creditos al semestre\n");
+                stream.write("creditos_maximos_prim(semestres_j)                       numero maximo de creditos en primer semestre  \n");
                 stream.write("correquisitos(materias_i, materias_k, semestres_j)       coreqs se deben cumplir\n");
               	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)      prereqs se deben cumplir\n");
               	stream.write("prerrequisitos_prim(materias_i, materias_k, semestres_j) no se puede ver una materia que tenga prerequisito en primer semestre;\n");
               	stream.write("funcion_objetivo                                 ..      n =E= sum((semestres_j), (sum((materias_i), x(materias_i, semestres_j)))*power(ord(semestres_j),5) );\n");
               	stream.write("no_repitis_materia(materias_i)                   ..      sum( (semestres_j), x(materias_i, semestres_j) ) =E= 1;\n");
-              	stream.write("creditos_maximos(semestres_j)                    ..      sum( (materias_i), x(materias_i, semestres_j)*creditos(materias_i) ) =L= %NUM_MAX_CREDITOS%;\n");
+                stream.write("creditos_maximos(semestres_j)$(ord(semestres_j) ge 2)                    ..      sum( (materias_i), x(materias_i, semestres_j)*creditos(materias_i) ) =L= %NUM_MAX_CREDITOS%;\n");
+              	stream.write("creditos_maximos_prim(semestres_j)$(ord(semestres_j) eq 1)               ..      sum( (materias_i), x(materias_i, semestres_j)*creditos(materias_i) ) =L= %NUM_MAX_CREDITOS_PRIM%;\n");
                 stream.write("correquisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 2)                                  ..      sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =L= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)), x(materias_k, semestres_l) );\n");
               	stream.write("prerrequisitos(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) ge 2)       ..      sum( semestres_l$(ord(semestres_l) ge 2 and ord(semestres_l) le ord(semestres_j)), x(materias_i, semestres_l)) =L= sum( semestres_l$(ord(semestres_l) ge 1 and ord(semestres_l) le ord(semestres_j)-1), x(materias_k, semestres_l) );\n");
               	stream.write("prerrequisitos_prim(materias_i, materias_k, semestres_j)$(requisitos(materias_i, materias_k) eq 1 and ord(semestres_j) eq 1)  ..      x(materias_i, semestres_j) =E= 0;\n");
@@ -229,7 +233,7 @@ router.route('/')
               	stream.write("Solve modelo using mip minimizing n;\n");
               	stream.write("file GAMSresults /"+optimizerPath+resultsFilename+"/;\n");
               	stream.write("put GAMSresults;\n");
-              	stream.write("loop((materias_i,semestres_j)$(x.l(materias_i, semestres_j) eq 1), put materias_i.tl, @12, semestres_j.tl, @14, creditos(materias_i) /);\n");
+              	stream.write("loop((materias_i,semestres_j)$(x.l(materias_i, semestres_j) eq 1), put materias_i.tl, @12, semestres_j.tl, @18, creditos(materias_i) /);\n");
 
                 stream.end();
               });
@@ -284,9 +288,11 @@ router.route('/')
                   line_elements_length = line_elements.length;
 
                   //TODO: arreglar estos indices (que el output de gams este separado solo por un espacio)
+                  //console.log(line_elements);
+                  //console.log(line_elements_length);
                   sem = line_elements[3];
                   n = parseInt(sem.split("s")[1]);
-                  cred = line_elements[11];
+                  cred = line_elements[15-(sem.length-2)];
                   c = parseInt(cred.split("\r")[0]);
 
                   courses.push(line_elements[0]);
