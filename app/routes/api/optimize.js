@@ -43,6 +43,7 @@ router.route('/')
     //var adjacencyMatrix = createAdjacencyMatrix(totalCourses);
     var totalCourses = [];
     var coursesCredits = [];
+    var coursesNamesDict = {};
 
     var http = require('http');
     http.get({
@@ -65,6 +66,7 @@ router.route('/')
             course = parsed[i];
             totalCourses.push(course.course_code);
             coursesCredits.push(course.credits);
+            coursesNamesDict[course.course_code] = course.course_name;
           }
           var numTotalCourses = totalCourses.length;
 
@@ -311,6 +313,7 @@ router.route('/')
                 var responseSemesters = [];
                 var semesterCourses = [];
                 var semesterCredits = [];
+                var semesterNames = [];
                 var sem = {};
                 var j = 0;
                 for (i = 0; i < numSemesters; i++) {
@@ -320,13 +323,16 @@ router.route('/')
                     if (semesters[j] == i+1){
                       semesterCourses.push(courses[j]);
                       semesterCredits.push(credits[j]);
+                      semesterNames.push(coursesNamesDict[courses[j]]);
                     }
                   }
                   sem.courses = semesterCourses;
                   sem.credits = semesterCredits;
+                  sem.courses_names = semesterNames;
 
                   semesterCourses = [];
                   semesterCredits = [];
+                  semesterNames = [];
 
                   responseSemesters.push(sem);
                   sem = {};

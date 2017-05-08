@@ -64,170 +64,120 @@ El return del post es:
 
 ```json
 {
-  "numSemesters": 6,
+  "numSemesters": 11,
   "semesters": [
     {
       "num": 1,
       "courses": [
+        "CBUA0002",
         "CLES0002",
-        "FISI1002",
         "FISI1018",
         "FISI1019",
-        "FISI3701",
+        "FISI2029",
         "ISIS1001",
         "ISIS1002",
         "ISIS1204",
         "LENG1501",
         "LENG2999",
         "LENG3999",
-        "MATE1203",
-        "MATE1207",
-        "MATE1214"
+        "MATE1203"
       ],
       "credits": [
         3,
+        3,
+        3,
+        1,
         1,
         3,
-        1,
-        1,
-        3,
         0,
         3,
         0,
         0,
         0,
-        3,
-        3,
         3
+      ],
+      "courses_names": [
+        "CBU A 2",
+        "CLE 2",
+        "FISICA I",
+        "FISICA EXPERIMENTAL I",
+        "LABORATORIO MÉTODOS COMPUTACIONALES",
+        "INTROD. INGENIERIA DE SISTEMAS",
+        "ACOMPAÌÔAMIENTO ISIS",
+        "ALGORITMICA Y PROGR. OBJ. I",
+        "REQUISITO DE ESPAÑOL",
+        "REQUISITO DE LECTURA EN INGLES",
+        "REQUISITO DOMINIO DE LENGUA EXTRANJERA",
+        "CALCULO DIFERENCIAL"
       ]
     },
     {
       "num": 2,
       "courses": [
         "CBUA0001",
-        "CBUB0003",
+        "FISI1002",
         "FISI1028",
         "FISI1029",
-        "ISIS1104",
+        "FISI2026",
         "ISIS1205",
         "MATE1105",
-        "MBIO1100",
+        "MATE1214",
         "QUIM1101"
       ],
       "credits": [
         3,
+        1,
         3,
-        3,
+        1,
         1,
         3,
         3,
         3,
-        3,
         3
+      ],
+      "courses_names": [
+        "CBU A 1",
+        "INTRODUCCION A FISICA",
+        "FISICA II (INGLES)",
+        "FISICA EXPERIMENTAL II",
+        "HERRAMIENTAS COMPUTACIONALES",
+        "ALGORITMICA Y PROGR. OBJ. II",
+        "ALGEBRA LINEAL 1",
+        "CALCULO INTEGRAL-ECUAC.DIFEREN",
+        "QUIMICA GENERAL"
       ]
     },
     {
       "num": 3,
       "courses": [
-        "CBUA0003",
         "CBUB0001",
-        "DERE1300",
+        "CBUB0002",
+        "FISI1003",
         "FISI1038",
         "FISI1039",
-        "ISIS1106",
         "ISIS1206",
-        "ISIS1304",
-        "ISIS1404"
+        "ISIS1404",
+        "MATE1207"
       ],
       "credits": [
         3,
         3,
-        3,
-        3,
         1,
         3,
+        1,
         3,
         3,
         3
-      ]
-    },
-    {
-      "num": 4,
-      "courses": [
-        "CBUA0002",
-        "CBUB0002",
-        "CLES0001",
-        "FISI2026",
-        "IIND2401",
-        "ISIS1105",
-        "ISIS2304",
-        "ISIS2403",
-        "ISIS2603"
       ],
-      "credits": [
-        3,
-        3,
-        3,
-        1,
-        3,
-        3,
-        3,
-        3,
-        3
-      ]
-    },
-    {
-      "num": 5,
-      "courses": [
-        "FISI1003",
-        "FISI1048",
-        "FISI1049",
-        "FISI3098",
-        "IIND2106",
-        "ISIS2007",
-        "ISIS2008",
-        "ISIS2503",
-        "ISIS3204",
-        "MATE1107"
-      ],
-      "credits": [
-        1,
-        3,
-        3,
-        3,
-        3,
-        3,
-        0,
-        3,
-        3,
-        3
-      ]
-    },
-    {
-      "num": 6,
-      "courses": [
-        "FISI1005",
-        "FISI1860",
-        "FISI2007",
-        "ISIS2203",
-        "ISIS3007",
-        "ISIS3301",
-        "ISIS3302",
-        "ISIS3510",
-        "ISIS3710",
-        "ISIS3990"
-      ],
-      "credits": [
-        1,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        0
+      "courses_names": [
+        "CBU B 1",
+        "CBU B 2",
+        "COLOQUIO 1 DE FISICA",
+        "ONDAS Y FLUIDOS",
+        "LABORATORIO DE ONDAS Y FLUIDOS",
+        "ESTRUCTURAS DE DATOS",
+        "TI EN LAS ORGANIZACIONES",
+        "CALCULO VECTORIAL"
       ]
     }
   ]
