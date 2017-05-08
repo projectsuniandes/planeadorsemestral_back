@@ -35,7 +35,7 @@
         </div>
         <div class="row">
           <select name="program1" id="program1" ng-model="optimizer.program1" class="form-control">
-            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.name}}</option>
+            <option ng-repeat="a in optimizer.programs | orderBy: 'name'" value={{a.program_code}}>{{a.name}}</option>
           </select>
         </div>
         <br />
@@ -45,7 +45,7 @@
         <div class="row">
           <select name="program2" id="program2" ng-model="optimizer.program2" class="form-control">
             
-            <option ng-repeat="a in optimizer.programs | filter: program" value={{a.program_code}}>{{a.name}}</option>
+            <option ng-repeat="a in optimizer.programs | filter: program | orderBy: 'name'" value={{a.program_code}}>{{a.name}}</option>
           </select>
         </div>
       </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="row">
           <select name="opcion" id="opcion" ng-model="optimizer.opcion" class="form-control">
-            <option ng-repeat="a in optimizer.programs" value={{a.program_code}}>{{a.name}}</option>
+            <option ng-repeat="a in optimizer.programs | orderBy: 'name'" value={{a.program_code}}>{{a.name}}</option>
           </select>
         </div>
       </div>
