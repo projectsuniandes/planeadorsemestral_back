@@ -2,12 +2,12 @@
   <section class="works service-page">
     <div class="container">
       <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Resultados de la optimizacion</h2>
-      {{graph.courses.selected}}
       <br />
       <div class="row">
-
-
-        <div class="col-md-offset-1 col-md-10">
+      <div class="spinner">
+      <i ng-if="graph.processing" class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+      </div>
+        <div ng-if="graph.semesters" class="col-md-offset-1 col-md-10">
           <table class="table table-hover">
             <thead>
               <tr>
@@ -39,7 +39,10 @@
         <br />
         <div class="col-md-12" style="text-align:right">
           <div class="btn-group">
-            <a class="btn btn-success" ng-click="graph.generate()">Generar</a>
+            <a  class="btn btn-success" ng-click="graph.generate()">
+              <span ng-if="!graph.processing">Generar</span>
+              <span ng-if="graph.processing">Generando</span>
+            </a>
           </div>
         </div>
       </div>

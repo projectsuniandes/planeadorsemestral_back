@@ -3,8 +3,11 @@
     <div class="container">
       <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Seleccione los cursos vistos</h2>
       <br />
-
-      <div class="row">
+      <div class="spinner">
+      <i ng-if="courses.processing" class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+      </div>
+      <div ng-if="!courses.processing" class="row">
+       
         <input placeholder="Buscar curso..." class="col-md-12 form-control" type="text" ng-model="search">
         <br>
         <div class="col-md-6 col-sm-6">

@@ -1,18 +1,25 @@
 angular.module('coursesCtrl', ['coursesService'])
 .controller('coursesController', function($stateParams, Courses){
   var vm =this;
+  vm.processing=false;
   vm.setCourses= function(courses){
+    vm.processing=true;
     console.log(courses);
     Courses.setCourses(courses);
+    vm.processing=false;
   }
+ 
   vm.getCourses = function(){
+     vm.processing=true;
     Courses.getCourses().success(function(data){
       vm.courses= data;
     })
+    vm.processing=false;
   }
   vm.num=0;
   vm.getCourses();
   vm.generate = function(){
+    vm.processing=true;
     Courses.optimize().success(function(data){
       
       vm.data = data;
@@ -30,6 +37,7 @@ angular.module('coursesCtrl', ['coursesService'])
         vm.totalCredits=0;
       }
       console.log(vm.totalCredits);
+      vm.processing=false;
      
     })
   }
