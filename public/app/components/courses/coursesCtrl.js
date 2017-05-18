@@ -7,6 +7,7 @@ angular.module('coursesCtrl', ['coursesService'])
     console.log(courses);
     Courses.setCourses(courses);
     vm.processing=false;
+   
   }
  
   vm.getCourses = function(){

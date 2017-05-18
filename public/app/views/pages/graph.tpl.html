@@ -1,4 +1,4 @@
-<div ng-controller="coursesController as graph">
+<div ng-controller="coursesController as graph"  data-ng-init="graph.generate()">
   <section class="works service-page">
     <div class="container">
       <h2 class="subtitle wow fadeInUp animated" data-wow-delay=".3s" data-wow-duration="500ms">Resultados de la optimizacion</h2>
@@ -37,11 +37,11 @@
       </div>
       <div class="row">
         <br />
-        <div class="col-md-12" style="text-align:right">
+        <div ng-if="!graph.processing" class="col-md-12" style="text-align:right">
           <div class="btn-group">
-            <a  class="btn btn-success" ng-click="graph.generate()">
-              <span ng-if="!graph.processing">Generar</span>
-              <span ng-if="graph.processing">Generando</span>
+            <a  class="btn btn-danger" ui-sref="courses">
+              <span >Atrás</span>
+             
             </a>
           </div>
         </div>
