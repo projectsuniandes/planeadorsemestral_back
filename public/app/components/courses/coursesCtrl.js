@@ -1,6 +1,10 @@
 angular.module('coursesCtrl', ['coursesService'])
 .controller('coursesController', function($stateParams, Courses){
   var vm =this;
+  vm.setCourses= function(courses){
+    console.log(courses);
+    Courses.setCourses(courses);
+  }
   vm.getCourses = function(){
     Courses.getCourses().success(function(data){
       vm.courses= data;

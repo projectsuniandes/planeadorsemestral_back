@@ -8,6 +8,7 @@ angular.module('coursesService', [])
 	let option;
 	let maxCredits;
   let minCredits;
+  let coursesTaken;
   coursesFactory.setPrograms = function(program_1, program_2, pOption, pMaxCredits, pMinCredits){
     program1=program_1;
     program2=program_2;
@@ -15,12 +16,15 @@ angular.module('coursesService', [])
 		maxCredits=pMaxCredits;
     minCredits=pMinCredits;
   }
+  coursesFactory.setCourses = function(courses){
+    coursesTaken=courses;
+  }
   coursesFactory.optimize= function(){
 		console.log('in optimize');
 		optimizeData= {};
 		optimizeData.firstProgram= program1;
     optimizeData.secondProgram= program2;
-		optimizeData.coursesTaken =[];
+		optimizeData.coursesTaken =  coursesTaken;
     optimizeData.option= option;
     optimizeData.minCredits=minCredits;
     optimizeData.maxCredits=maxCredits;
