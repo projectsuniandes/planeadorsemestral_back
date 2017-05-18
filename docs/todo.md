@@ -18,6 +18,4 @@
 
 * dar opciones de electivas en ciencias, ingenieria (y recomendar cual le sirve en ambas carreras)
 
-* arreglar en el frontend que toque darle click 2 veces a generar
-
 * poner la opción de ingles
