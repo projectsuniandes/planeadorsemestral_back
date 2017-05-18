@@ -26,6 +26,8 @@ router.route('/')
     var minCredits = jsonData.minCredits;
     var maxCredits = jsonData.maxCredits;
 
+    console.log("cursos vistos: "+coursesTaken)
+
     var maxCreditsFirstSemester = 20.5;
     var maxSemesters = 30;
     var optimizerPath = "C:\\Users\\MariaCamila\\Desktop\\";
@@ -60,13 +62,19 @@ router.route('/')
           // Data reception is done, do whatever with it!
           var parsed = JSON.parse(body);
 
-          var i;
+          var i; var indexC;
           var course = {};
           for (i = 0; i < parsed.length; i++) {
             course = parsed[i];
-            totalCourses.push(course.course_code);
-            coursesCredits.push(course.credits);
-            coursesNamesDict[course.course_code] = course.course_name;
+            indexC = coursesTaken.indexOf(course.course_code);
+            if (indexC <= -1){
+              totalCourses.push(course.course_code);
+              coursesCredits.push(course.credits);
+              coursesNamesDict[course.course_code] = course.course_name;
+            }
+            else {
+              console.log("curso ya visto: "+course.course_code)
+            }
           }
           var numTotalCourses = totalCourses.length;
 
